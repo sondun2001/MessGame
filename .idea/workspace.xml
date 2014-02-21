@@ -18,7 +18,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any>
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -54,6 +54,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -63,10 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MessMapPhysics.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MessMapPhysics.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="312" column="43" selection-start="13090" selection-end="13090" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6035">
+            <state line="38" column="22" selection-start="1367" selection-end="1367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
               <folding />
             </state>
           </provider>
@@ -75,7 +76,7 @@
       <file leaf-file-name="OrthoCamController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="5" selection-start="1819" selection-end="1819" vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2006">
+            <state line="27" column="56" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
@@ -84,7 +85,34 @@
       <file leaf-file-name="MessMap.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="41" selection-start="2306" selection-end="2306" vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="1989">
+            <state line="35" column="57" selection-start="1128" selection-end="1128" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="1700">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SlickException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/SlickException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Map.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Map.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="16" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Zone.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="47" selection-start="103" selection-end="103" vertical-scroll-proportion="0.20446736" vertical-offset="0" max-vertical-offset="582">
               <folding />
             </state>
           </provider>
@@ -108,9 +136,9 @@
         <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java" />
         <option value="$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java" />
         <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java" />
+        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java" />
         <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java" />
         <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java" />
-        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java" />
       </list>
     </option>
   </component>
@@ -146,6 +174,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -160,14 +190,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Mess-robovm" />
+              <option name="myItemId" value="Mess" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,7 +233,7 @@
       <recent name="G:\Shared\projects\MessGame\Mess\libs" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Application.Mess-android">
+  <component name="RunManager" selected="Application.Mess-Desktop">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -400,31 +428,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34341252" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34341252" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33693305" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33620688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21671991" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -452,7 +480,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649" />
+        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
@@ -491,7 +521,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649" />
+        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
@@ -520,7 +552,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649" />
+        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
@@ -549,7 +583,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="27" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1088" />
+        <state line="22" column="27" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1088">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess-robovm/src/com/rebelo/mess/RobovmLauncher.java">
@@ -632,16 +668,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="16" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="15" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/math/Vector3.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="11" selection-start="2924" selection-end="2924" vertical-scroll-proportion="0.9313233" vertical-offset="583" max-vertical-offset="9792" />
@@ -662,19 +688,9 @@
         <state line="24" column="77" selection-start="629" selection-end="629" vertical-scroll-proportion="0.5343643" vertical-offset="12" max-vertical-offset="935" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/SlickException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="33" selection-start="327" selection-end="327" vertical-scroll-proportion="0.3797251" vertical-offset="0" max-vertical-offset="582" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Mess-html/src/com/rebelo/mess/client/GwtLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="244" selection-end="244" vertical-scroll-proportion="0.116838485" vertical-offset="0" max-vertical-offset="582" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/kirchner/jumper/LineSegment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="27" selection-start="1169" selection-end="1169" vertical-scroll-proportion="-1.628866" vertical-offset="1560" max-vertical-offset="2142" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java">
@@ -689,36 +705,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="25" selection-start="4351" selection-end="4351" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="2890" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="5" selection-start="1819" selection-end="1819" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1921">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="41" selection-start="2306" selection-end="2306" vertical-scroll-proportion="0.0" vertical-offset="590" max-vertical-offset="1717">
+        <state line="126" column="25" selection-start="4351" selection-end="4351" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="2890">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/utils/ObjectMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="13" selection-start="3484" selection-end="3484" vertical-scroll-proportion="-15.790378" vertical-offset="10312" max-vertical-offset="12461" />
+        <state line="83" column="13" selection-start="3484" selection-end="3484" vertical-scroll-proportion="-15.790378" vertical-offset="10312" max-vertical-offset="12461">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_17/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="11" selection-start="5298" selection-end="5298" vertical-scroll-proportion="0.33333334" vertical-offset="1744" max-vertical-offset="18955" />
+        <state line="137" column="11" selection-start="5298" selection-end="5298" vertical-scroll-proportion="0.33333334" vertical-offset="1744" max-vertical-offset="18955">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="312" column="43" selection-start="13090" selection-end="13090" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6035">
+        <state line="38" column="22" selection-start="1367" selection-end="1367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="56" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="1785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/kirchner/jumper/LineSegment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="27" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.086440675" vertical-offset="561" max-vertical-offset="2142">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="57" selection-start="1128" selection-end="1128" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="1700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/SlickException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="16" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="47" selection-start="103" selection-end="103" vertical-scroll-proportion="0.20446736" vertical-offset="0" max-vertical-offset="582">
           <folding />
         </state>
       </provider>

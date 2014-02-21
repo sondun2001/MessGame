@@ -3,7 +3,6 @@ package com.rebelo.mess.map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapLayers;
@@ -25,7 +24,6 @@ public class MessMap extends InputAdapter {
     private TiledMap _map;
     private World _world;
     private OrthoCamController _cameraController;
-    //private Texture tiles;
 
     public int width;
     public int height;

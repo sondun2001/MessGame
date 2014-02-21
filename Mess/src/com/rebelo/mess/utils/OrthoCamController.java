@@ -19,20 +19,12 @@ public class OrthoCamController extends InputAdapter {
     final float MIN_ZOOM = 0.8f;
     final float MAX_ZOOM = 2f;
 
-    private MessMap _messMap;/*
-    private float _leftBounds;
-    private float _bottomBounds;
-    private float _rightBounds;
-    private float _topBounds;*/
+    private MessMap _messMap;
 
-    public OrthoCamController (MessMap map, OrthographicCamera camera) {
+    public OrthoCamController (MessMap map, OrthographicCamera camera)
+    {
         this.camera = camera;
-        _messMap = map;/*
-
-        _leftBounds = MessGame.WINDOW_WIDTH / 2;
-        _bottomBounds = MessGame.WINDOW_HEIGHT / 2;
-        _rightBounds = _messMap.getPixelWidth() - MessGame.WINDOW_WIDTH / 2;
-        _topBounds = _messMap.getPixelHeight() - MessGame.WINDOW_HEIGHT / 2;*/
+        _messMap = map;
     }
 
     @Override
