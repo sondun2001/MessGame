@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Mess/Mess.iml" filepath="$PROJECT_DIR$/Mess/Mess.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mess-android/Mess-android.iml" filepath="$PROJECT_DIR$/Mess-android/Mess-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mess-desktop/Mess-desktop.iml" filepath="$PROJECT_DIR$/Mess-desktop/Mess-desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mess-html/Mess-html.iml" filepath="$PROJECT_DIR$/Mess-html/Mess-html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mess-robovm/Mess-robovm.iml" filepath="$PROJECT_DIR$/Mess-robovm/Mess-robovm.iml" />
+    </modules>
+  </component>
+</project>
+
