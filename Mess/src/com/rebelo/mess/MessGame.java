@@ -5,12 +5,8 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
@@ -18,7 +14,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.rebelo.mess.map.MessMap;
-import com.rebelo.mess.map.MessMapPhysics;
 
 public class MessGame implements ApplicationListener
 {
@@ -29,8 +24,9 @@ public class MessGame implements ApplicationListener
      * "meters".
      */
     public static final float PIXELS_PER_METER = 60.0f;
-    public static final float MAP_WIDTH = 1024;
-    public static final float MAP_HEIGHT = 1024;
+    public static final int REF_WIDTH = 1024;
+    public static final int REF_HEIGHT = 768;
+    public static float scaleFactor = 1f;
 
     public static final float TIMESTEP = 1.0f / 60.0f;
     public static final int VELOCITYITERATIONS = 8;
@@ -41,7 +37,6 @@ public class MessGame implements ApplicationListener
     public static float DENSITY;
 
     private MessMap _messMap;
-    private MessMapPhysics _messPhysics;
 
     private World _world;
 
@@ -49,7 +44,6 @@ public class MessGame implements ApplicationListener
     private SpriteBatch _batch;
     private TiledMapRenderer _renderer;
     private OrthographicCamera _camera;
-    //private OrthographicCamera _lightCam;
 
     private Box2DDebugRenderer _box2dRenderer;
 	
@@ -58,6 +52,7 @@ public class MessGame implements ApplicationListener
         WINDOW_WIDTH = Gdx.graphics.getWidth();
         WINDOW_HEIGHT = Gdx.graphics.getHeight();
         DENSITY = Gdx.graphics.getDensity();
+        scaleFactor = WINDOW_HEIGHT / REF_HEIGHT;
 
         if (Gdx.app.getType() == Application.ApplicationType.Desktop)
         {
@@ -65,18 +60,8 @@ public class MessGame implements ApplicationListener
             //Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height, true);
         }
 
-		/*
-		batch = new SpriteBatch();
-		
-		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		
-		TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
-		
-		sprite = new Sprite(region);
-		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
-		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);*/
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
+
         _batch = new SpriteBatch();
         _camera = new OrthographicCamera();
         _camera.setToOrtho(false, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -90,10 +75,6 @@ public class MessGame implements ApplicationListener
 
         // TODO: Create async loading operations of the following
         _messMap = new MessMap(_camera, _world);
-
-        // Pass in the light cam for the RayHandler
-        _messPhysics = new MessMapPhysics(_camera, _world);
-        _messPhysics.loadCollisions(_messMap);
 
         _renderer = new OrthogonalTiledMapRenderer(_messMap.getMap());
 
@@ -124,7 +105,7 @@ public class MessGame implements ApplicationListener
         // TODO: Create RayHandler in MessGame?
 
         Matrix4 cameraMatrix = _camera.combined.scale(PIXELS_PER_METER, PIXELS_PER_METER, PIXELS_PER_METER);
-        _messPhysics.updateAndRender(cameraMatrix);
+        _messMap.updateAndRender(cameraMatrix);
 
         // Render UI
 

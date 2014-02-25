@@ -1,6 +1,5 @@
 package com.rebelo.mess;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -11,11 +10,8 @@ public class Main {
 		cfg.useGL20 = true;
         cfg.vSyncEnabled = true;
         cfg.resizable = true;
-        cfg.width = 1024;
-        cfg.height = 768;
-		/*cfg.width = 1920;
-		cfg.height = 1080;
-        cfg.fullscreen = true;*/
+        cfg.width = 800;
+        cfg.height = 600;
 
 		new LwjglApplication(new MessGame(), cfg);
     }

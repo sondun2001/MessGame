@@ -1,60 +1,68 @@
+
 game_assets.png
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
-grass_water_2
-  rotate: false
-  xy: 73, 3
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 2
-water
-  rotate: false
-  xy: 38, 73
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
 concrete
   rotate: false
-  xy: 3, 3
+  xy: 1, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 grass
   rotate: false
-  xy: 38, 3
+  xy: 1, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+grass_water_2
+  rotate: false
+  xy: 35, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
 grass_water_3
   rotate: false
-  xy: 3, 38
+  xy: 1, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
-wall_1_corner
+light
   rotate: false
-  xy: 3, 73
+  xy: 35, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: -1
+  index: 1
 support
   rotate: false
-  xy: 38, 38
+  xy: 69, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 wall
   rotate: false
-  xy: 73, 38
+  xy: 35, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
+wall_1_corner
+  rotate: false
+  xy: 69, 35
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+water
+  rotate: false
+  xy: 69, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1

@@ -4,7 +4,6 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.rebelo.mess.MessGame;
 import com.rebelo.mess.map.MessMap;
 
 /**
@@ -16,7 +15,7 @@ public class OrthoCamController extends InputAdapter {
     final Vector3 last = new Vector3(-1, -1, -1);
     final Vector3 delta = new Vector3();
 
-    final float MIN_ZOOM = 0.8f;
+    final float MIN_ZOOM = 0.5f;
     final float MAX_ZOOM = 2f;
 
     private MessMap _messMap;

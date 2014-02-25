@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88b3547a-4007-42ca-b901-9bf55bdf9c68" name="Default" comment="" />
+    <list id="88b3547a-4007-42ca-b901-9bf55bdf9c68" name="Default" comment="" />
+    <list default="true" id="2c2c9a9d-1819-43d5-a8f5-bcf58b835c9e" name="Map Selection and Object Placement" comment="Client only">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/GameLight.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/GameObject.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/IGameObject.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Mess-android/assets/data/game_assets.atlas" />
+      <change type="DELETED" beforePath="G:\Shared\projects\MessGame\Mess-android\assets\data\game_assets.txt" afterPath="" />
+      <change type="DELETED" beforePath="G:\Shared\projects\MessGame\Mess\src\com\rebelo\mess\map\MessMapPhysics.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mess-android/assets/data/game_assets.png" afterPath="$PROJECT_DIR$/Mess-android/assets/data/game_assets.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java" afterPath="$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java" afterPath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java" afterPath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java" afterPath="$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="MessGame.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,67 +79,20 @@
     <favorites_list name="MessGame" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="MessMapPhysics.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="22" selection-start="1367" selection-end="1367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrthoCamController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="56" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="1785">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="57" selection-start="1128" selection-end="1128" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="1700">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SlickException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/SlickException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="16" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Zone.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="47" selection-start="103" selection-end="103" vertical-scroll-proportion="0.20446736" vertical-offset="0" max-vertical-offset="582">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -135,9 +104,13 @@
         <option value="$PROJECT_DIR$/Mess-android/src/com/rebelo/mess/MainActivity.java" />
         <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java" />
         <option value="$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java" />
-        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java" />
-        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java" />
         <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java" />
+        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java" />
+        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java" />
+        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/GameObject.java" />
+        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/IGameObject.java" />
+        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/EmptyTile.java" />
+        <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/GameLight.java" />
         <option value="$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java" />
       </list>
     </option>
@@ -148,7 +121,7 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -174,8 +147,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,7 +163,187 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Mess-desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess-desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess-android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MessGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mess" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -202,7 +355,7 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="preferences.sourceCode.General" />
+    <property name="options.lastSelected" value="vcs.Git" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
@@ -213,10 +366,10 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Mess" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="DEBUGGABLE_DEVICE" value="FA33WS901666" />
     <property name="DEBUGGABLE_PROCESS" value="com.rebelo.mess" />
@@ -421,35 +574,36 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="88b3547a-4007-42ca-b901-9bf55bdf9c68" name="Default" comment="" />
+      <changelist id="2c2c9a9d-1819-43d5-a8f5-bcf58b835c9e" name="Map Selection and Object Placement" comment="Client only" />
       <created>1387167283535</created>
       <updated>1387167283535</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819384" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721382" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34341252" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34989202" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33620688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33585313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21671991" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21831736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -469,6 +623,7 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -480,117 +635,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="68" selection-start="1460" selection-end="1460" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="1496">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Tutorials/libGDX/JumperTutorial/src/com/example/jumpertutorial/TiledMapHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="116" selection-start="11113" selection-end="11113" vertical-scroll-proportion="0.0" vertical-offset="6307" max-vertical-offset="7225" />
-      </provider>
-    </entry>
-    <entry file="file://E:/Tutorials/libGDX/JumperTutorial/src/com/example/jumpertutorial/JumperTutorial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6239" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/util/xml/XMLElementList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1258" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="4" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/util/xml/XMLElementList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1258" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1649">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="59" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1173">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/util/xml/XMLElementList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1258" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="27" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1088">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess-robovm/src/com/rebelo/mess/RobovmLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="39" selection-start="65" selection-end="65" vertical-scroll-proportion="0.065259114" vertical-offset="0" max-vertical-offset="521" />
+        <state line="22" column="27" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1088" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/maps/tiled/renderers/OrthogonalTiledMapRenderer.java">
@@ -601,16 +646,6 @@
     <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/maps/MapProperties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="11" selection-start="1220" selection-end="1220" vertical-scroll-proportion="-0.8685345" vertical-offset="692" max-vertical-offset="1870" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/maps/tiled/TiledMapTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="1028" selection-end="1028" vertical-scroll-proportion="-0.21767241" vertical-offset="339" max-vertical-offset="816" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/maps/tiled/tiles/StaticTiledMapTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="28" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.40301725" vertical-offset="153" max-vertical-offset="1292" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/util/xml/XMLElementList.java">
@@ -658,16 +693,6 @@
         <state line="14" column="41" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357" />
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/graphics/OrthographicCamera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="29" selection-start="1604" selection-end="1622" vertical-scroll-proportion="0.33274958" vertical-offset="184" max-vertical-offset="1734" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess-android/assets/data/game_assets.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/math/Vector3.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="11" selection-start="2924" selection-end="2924" vertical-scroll-proportion="0.9313233" vertical-offset="583" max-vertical-offset="9792" />
@@ -693,82 +718,193 @@
         <state line="7" column="13" selection-start="244" selection-end="244" vertical-scroll-proportion="0.116838485" vertical-offset="0" max-vertical-offset="582" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="35" selection-start="585" selection-end="585" vertical-scroll-proportion="0.55498284" vertical-offset="0" max-vertical-offset="582" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/Mess/libs/box2dlights.jar!/box2dLight/RayHandler.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="-1.6552962" vertical-offset="1007" max-vertical-offset="1564" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="25" selection-start="4351" selection-end="4351" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="2890">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/utils/ObjectMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="13" selection-start="3484" selection-end="3484" vertical-scroll-proportion="-15.790378" vertical-offset="10312" max-vertical-offset="12461">
-          <folding />
-        </state>
+        <state line="83" column="13" selection-start="3484" selection-end="3484" vertical-scroll-proportion="-15.790378" vertical-offset="10312" max-vertical-offset="12461" />
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_17/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="11" selection-start="5298" selection-end="5298" vertical-scroll-proportion="0.33333334" vertical-offset="1744" max-vertical-offset="18955">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMapPhysics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="22" selection-start="1367" selection-end="1367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="56" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="1785">
-          <folding />
-        </state>
+        <state line="137" column="11" selection-start="5298" selection-end="5298" vertical-scroll-proportion="0.33333334" vertical-offset="1744" max-vertical-offset="18955" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/kirchner/jumper/LineSegment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="27" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.086440675" vertical-offset="561" max-vertical-offset="2142">
+        <state line="36" column="27" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.086440675" vertical-offset="561" max-vertical-offset="2142" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/SlickException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="16" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="47" selection-start="103" selection-end="103" vertical-scroll-proportion="0.13192904" vertical-offset="0" max-vertical-offset="902" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess-robovm/src/com/rebelo/mess/RobovmLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="281" selection-end="281" vertical-scroll-proportion="0.15077606" vertical-offset="0" max-vertical-offset="902" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/graphics/OrthographicCamera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="11" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.3797251" vertical-offset="0" max-vertical-offset="1734" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="19" selection-start="6624" selection-end="6624" vertical-scroll-proportion="1.9832495" vertical-offset="958" max-vertical-offset="3196" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/InputAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="19" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.15602838" vertical-offset="252" max-vertical-offset="816" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/Input.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="730" column="24" selection-start="24397" selection-end="24397" vertical-scroll-proportion="0.3321234" vertical-offset="11972" max-vertical-offset="13022" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess-android/assets/data/MessAssets.pack">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/physics/box2d/Body.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="718" column="16" selection-start="25477" selection-end="25477" vertical-scroll-proportion="0.33333334" vertical-offset="11746" max-vertical-offset="13430" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/utils/OrthoCamController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="45" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/math/Frustum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="0" selection-start="6658" selection-end="6658" vertical-scroll-proportion="0.0" vertical-offset="2243" max-vertical-offset="3553">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/util/pathfinding/AStarPathFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="24" selection-start="670" selection-end="682" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="9792" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/graphics/g3d/environment/BaseLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="22" selection-start="873" selection-end="873" vertical-scroll-proportion="0.17465754" vertical-offset="0" max-vertical-offset="584" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess-android/assets/data/GameAssets1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/box2dlights.jar!/box2dLight/ConeLight.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="11" selection-start="234" selection-end="234" vertical-scroll-proportion="0.24954128" vertical-offset="0" max-vertical-offset="545" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/graphics/g3d/environment/PointLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="13" selection-start="902" selection-end="902" vertical-scroll-proportion="-0.02915952" vertical-offset="119" max-vertical-offset="1020" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/box2dlights.jar!/box2dLight/PointLight.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="22" selection-start="533" selection-end="533" vertical-scroll-proportion="0.3655914" vertical-offset="0" max-vertical-offset="558" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess-android/assets/data/game_assets.atlas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1258" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess-desktop/src/com/rebelo/mess/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="29" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/box2dlights.jar!/box2dLight/Light.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="39" selection-start="2813" selection-end="2830" vertical-scroll-proportion="0.38404453" vertical-offset="1204" max-vertical-offset="1768" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/maps/tiled/tiles/StaticTiledMapTile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="11" selection-start="2089" selection-end="2089" vertical-scroll-proportion="1.6493056" vertical-offset="104" max-vertical-offset="1292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/maps/tiled/TiledMapTile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="17" selection-start="977" selection-end="977" vertical-scroll-proportion="0.2951389" vertical-offset="0" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Mess/libs/gdx-sources.jar!/com/badlogic/gdx/maps/tiled/TiledMapTileLayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="20" selection-start="2085" selection-end="2090" vertical-scroll-proportion="0.33272728" vertical-offset="905" max-vertical-offset="2601">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/GameLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="49" selection-start="1344" selection-end="1344" vertical-scroll-proportion="0.46875" vertical-offset="546" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="35" selection-start="320" selection-end="320" vertical-scroll-proportion="0.44270834" vertical-offset="0" max-vertical-offset="576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/entities/IGameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="26" selection-start="137" selection-end="137" vertical-scroll-proportion="0.17708333" vertical-offset="0" max-vertical-offset="576">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/MessMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="57" selection-start="1128" selection-end="1128" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="1700">
-          <folding />
+        <state line="47" column="36" selection-start="1869" selection-end="1869" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="6239">
+          <folding>
+            <element signature="e#2551#2581#0" expanded="true" />
+            <element signature="e#2658#2694#0" expanded="true" />
+            <element signature="e#2880#2904#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/org/newdawn/slick/SlickException.java">
+    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/MessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="16" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mess/src/com/rebelo/mess/map/data/Zone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="47" selection-start="103" selection-end="103" vertical-scroll-proportion="0.20446736" vertical-offset="0" max-vertical-offset="582">
+        <state line="97" column="34" selection-start="3241" selection-end="3241" vertical-scroll-proportion="0.38368055" vertical-offset="1207" max-vertical-offset="2346">
           <folding />
         </state>
       </provider>
@@ -825,7 +961,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Mess</last-edited>
+          <last-edited>Mess-robovm</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
