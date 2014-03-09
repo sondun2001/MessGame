@@ -5,9 +5,9 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
@@ -41,8 +41,9 @@ public class MessGame implements ApplicationListener
     private World _world;
 
     private BitmapFont _font;
+    private Batch _tileMapSpriteBatch;
     private SpriteBatch _batch;
-    private TiledMapRenderer _renderer;
+    private OrthogonalTiledMapRenderer _renderer;
     private OrthographicCamera _camera;
 
     private Box2DDebugRenderer _box2dRenderer;
@@ -57,7 +58,7 @@ public class MessGame implements ApplicationListener
         if (Gdx.app.getType() == Application.ApplicationType.Desktop)
         {
             // set resolution to default and set full-screen to true
-            //Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height, true);
+            Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height, true);
         }
 
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
@@ -77,11 +78,12 @@ public class MessGame implements ApplicationListener
         _messMap = new MessMap(_camera, _world);
 
         _renderer = new OrthogonalTiledMapRenderer(_messMap.getMap());
+        _tileMapSpriteBatch = _renderer.getSpriteBatch();
 
         _box2dRenderer = new Box2DDebugRenderer();
 
         _font = new BitmapFont();
-        _font.setScale(DENSITY);
+        _font.setScale(1.5f * DENSITY);
 	}
 
 	@Override
@@ -102,7 +104,9 @@ public class MessGame implements ApplicationListener
         _renderer.setView(_camera);
         _renderer.render();
 
-        // TODO: Create RayHandler in MessGame?
+        _tileMapSpriteBatch.begin();
+        _messMap.updateSprites(_tileMapSpriteBatch);
+        _tileMapSpriteBatch.end();
 
         Matrix4 cameraMatrix = _camera.combined.scale(PIXELS_PER_METER, PIXELS_PER_METER, PIXELS_PER_METER);
         _messMap.updateAndRender(cameraMatrix);
@@ -115,11 +119,10 @@ public class MessGame implements ApplicationListener
                 PIXELS_PER_METER));*/
         //_box2dRenderer.render(_world, cameraMatrix);
 
-        _batch.begin();
 
         // TODO: Optimize by caching off y loc
-        _font.draw(_batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 10, 20 * DENSITY);
-
+        _batch.begin();
+        _font.draw(_batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 20 * DENSITY, 30 * DENSITY);
         _batch.end();
 
         _world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
@@ -133,6 +136,7 @@ public class MessGame implements ApplicationListener
         DENSITY = Gdx.graphics.getDensity();
 
         _camera.setToOrtho(false, WINDOW_WIDTH, WINDOW_HEIGHT);
+        _batch.getProjectionMatrix().setToOrtho2D(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
 
 	@Override

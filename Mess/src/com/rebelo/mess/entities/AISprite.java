@@ -3,57 +3,76 @@ package com.rebelo.mess.entities;
 /**
  * Created by sondun2001 on 1/3/14.
  */
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
+import com.rebelo.mess.map.MessMap;
+import org.newdawn.slick.util.pathfinding.Mover;
+import org.newdawn.slick.util.pathfinding.Path;
 
-public class AISprite extends Sprite {
+// TODO: Pool this class
+public class AISprite extends Sprite implements Mover
+{
+    private Vector2 _velocity = new Vector2();
+    private float _speed = 200;
 
-    private Vector2 velocity = new Vector2();
-    private float speed = 900, tolerance = 3;
+    private Path _path;
+    private MessMap _map;
+    private int _currentStep = 0;
 
-    private Array<Vector2> path;
-    private int waypoint = 0;
-
-    public AISprite(Sprite sprite, Array<Vector2> path) {
+    public AISprite(Sprite sprite, MessMap map)
+    {
         super(sprite);
-        this.path = path;
+        _map = map;
     }
 
-    public void draw(SpriteBatch spriteBatch) {
+    @Override
+    public void draw(Batch batch)
+    {
         update(Gdx.graphics.getDeltaTime());
-        super.draw(spriteBatch);
+        super.draw(batch);
     }
 
-    public void update(float delta) {
-        float angle = (float) Math.atan2(path.get(waypoint).y - getY(), path.get(waypoint).x - getX());
-        velocity.set((float) Math.cos(angle) * speed, (float) Math.sin(angle) * speed);
+    public void update(float delta)
+    {
+        if (_path == null) return;
 
-        setPosition(getX() + velocity.x * delta, getY() + velocity.y * delta);
+        int stepX = _path.getStep(_currentStep).getX() * _map.tileWidth;
+        int stepY = _path.getStep(_currentStep).getY() * _map.tileHeight;
+        float angle = (float) Math.atan2(stepY - getY(), stepX - getX());
+        _velocity.set((float) Math.cos(angle) * _speed, (float) Math.sin(angle) * _speed);
+
+        setPosition(getX() + _velocity.x * delta, getY() + _velocity.y * delta);
         setRotation(angle * MathUtils.radiansToDegrees);
 
-        if(isWaypointReached()) {
-            setPosition(path.get(waypoint).x, path.get(waypoint).y);
-            if(waypoint + 1 >= path.size)
-                waypoint = 0;
-            else
-                waypoint++;
+        if(isWaypointReached(delta))
+        {
+            setPosition(stepX, stepY);
+            if(++_currentStep >= _path.getLength())
+            {
+                _currentStep = 0;
+                setPath(null);
+            }
         }
     }
 
-    public boolean isWaypointReached() {
-        return path.get(waypoint).x - getX() <= speed / tolerance * Gdx.graphics.getDeltaTime() && path.get(waypoint).y - getY() <= speed / tolerance * Gdx.graphics.getDeltaTime();
+    public boolean isWaypointReached(float delta)
+    {
+        int stepX = _path.getStep(_currentStep).getX() * _map.tileWidth;
+        int stepY = _path.getStep(_currentStep).getY() * _map.tileHeight;
+        return Math.abs(stepX - getX()) <= _speed * delta && Math.abs(stepY - getY()) <= _speed * delta;
     }
 
-    public Array<Vector2> getPath() {
-        return path;
+    public Path getPath() {
+        return _path;
     }
 
-    public int getWaypoint() {
-        return waypoint;
+    public void setPath(Path path)
+    {
+        _currentStep = 0;
+        _path = path;
     }
-
 }

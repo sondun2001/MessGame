@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapLayers;
@@ -25,36 +26,50 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.rebelo.mess.MessGame;
+import com.rebelo.mess.entities.AISprite;
 import com.rebelo.mess.entities.GameLight;
 import com.rebelo.mess.entities.GameObject;
 import com.rebelo.mess.utils.OrthoCamController;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
+import org.newdawn.slick.util.pathfinding.Path;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
+
+import java.util.Iterator;
 
 /**
  * Created by sondun2001 on 12/15/13.
  */
-public class MessMap extends InputAdapter implements TileBasedMap {
-
-    // TODO: Pass in data from the server to generate original map
+// TODO: Pass in data from the server to generate original map
+// TODO: State machine to handle different modes
+public class MessMap extends InputAdapter implements TileBasedMap
+{
     public static final int LAYER_GROUND = 0;
     public static final int LAYER_BUILDING = 1;
     public static final int LAYER_TALL = 2;
 
-    private static final int NUM_RAYS = 1000;
+    private static final float MIN_LIGHT = 0.02f;
+    private static final float MAX_LIGHT = 0.5f;
+    private static final float LIGHT_DELTA = 0.1f;
 
-    // TODO: State machine to handle different modes
+    // TODO: Make this configurable from the server
+    private static final float DAY_NIGHT_LENGTH = 50f;
 
     private TiledMap _map;
-    private World _world;
     private OrthographicCamera _camera;
     private OrthoCamController _cameraController;
     private Vector3 _worldCoordinates;
     private InputMultiplexer _multiplexer;
     private AStarPathFinder _aStarPathFinder;
 
-    private int _entityToBuild = 0;
+    // Build Mode Variables
+    private int _mode = 0;
+    private int _entityOption = 0;
+
+    // Lights
+    private float _currentAmbientLight = 0;
+    private float _currentElapsedTOD;
+    private boolean _gettingDark;
 
     // Layers
     private TiledMapTileLayer _groundLayer;
@@ -62,13 +77,16 @@ public class MessMap extends InputAdapter implements TileBasedMap {
     private TiledMapTileLayer _objectLayer;
 
     // Sprites
+    private TextureAtlas _atlas;
+    private Array<Sprite> _groundSprites = new Array<Sprite>(true, 32);
     private Array<Sprite> _buildingSprites = new Array<Sprite>(true, 32);
     private Array<Sprite> _objectSprites = new Array<Sprite>(true, 32);
 
-    private ObjectMap<Cell, Body> _bodyByCell = new ObjectMap<TiledMapTileLayer.Cell, Body>();
     private ObjectMap<Cell, GameObject> _gameObjectByCell = new ObjectMap<TiledMapTileLayer.Cell, GameObject>();
-    private ObjectMap<TiledMapTileLayer.Cell, BoundingBox> _boxByCell = new ObjectMap<TiledMapTileLayer.Cell, BoundingBox>();
-    private ObjectSet<Cell> _activeCells = new ObjectSet<TiledMapTileLayer.Cell>();
+    private ObjectSet<GameObject> _activeCells = new ObjectSet<GameObject>();
+    private Array<GameObject> _gameObjects = new Array<GameObject>();
+
+    private AISprite _player;
 
     public int width;
     public int height;
@@ -77,27 +95,32 @@ public class MessMap extends InputAdapter implements TileBasedMap {
     public MapLayers layers;
     public RayHandler rayHandler;
 
+    public static World world;
+
     public MessMap(OrthographicCamera camera, World world)
     {
-        _world = world;
+        this.world = world;
 
         // TODO: Download updated sprite sheet from server
-        TextureAtlas spriteSheet = new TextureAtlas("data/game_assets.atlas");
+        _atlas = new TextureAtlas("data/MessAssets.pack");
 
         // TODO: Create sprites from XML or server
-        Sprite[] groundSprites = new Sprite[1];
-        groundSprites[0] = spriteSheet.createSprite("concrete");
+        //_groundSprites.add(spriteSheet.createSprite("concrete"));
+        _groundSprites.add(_atlas.createSprite("grass"));
 
-        _buildingSprites.add(spriteSheet.createSprite("wall"));
-        _buildingSprites.add(spriteSheet.createSprite("support"));
+        _buildingSprites.add(_atlas.createSprite("wall"));
+        _buildingSprites.add(_atlas.createSprite("support"));
 
-        _objectSprites.add(spriteSheet.createSprite("light"));
+        _objectSprites.add(_atlas.createSprite("light_on"));
+        _objectSprites.add(_atlas.createSprite("light_off"));
+
+        _player = new AISprite(_objectSprites.get(1), this);
+        _player.setPosition(0, 0);
 
         _map = new TiledMap();
         layers = _map.getLayers();
 
-        Cell cell;
-        StaticTiledMapTile tile;
+        _gameObjects.ordered = false;
 
         // Default map properties
         width = 512;
@@ -105,6 +128,7 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         tileWidth = 32;
         tileHeight = 32;
 
+        // Camera Setup
         _camera = camera;
         _cameraController = new OrthoCamController(this, camera);
 
@@ -116,15 +140,18 @@ public class MessMap extends InputAdapter implements TileBasedMap {
 
         // Ground
         _groundLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight);
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                cell = new Cell();
-                tile = new StaticTiledMapTile(groundSprites[(int)(Math.random() * groundSprites.length)]);
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Cell cell = new Cell();
+                StaticTiledMapTile tile = new StaticTiledMapTile(_groundSprites.get((int)(Math.random() * _groundSprites.size)));
                 tile.setBlendMode(TiledMapTile.BlendMode.NONE);
                 cell.setTile(tile);
                 _groundLayer.setCell(x, y, cell);
             }
         }
+
         layers.add(_groundLayer);
 
         // Buildings
@@ -132,7 +159,7 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         layers.add(_buildingLayer);
 
         // Objects that will display over buildings
-        _objectLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight)
+        _objectLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight);
         layers.add(_objectLayer);
 
         // For input
@@ -140,13 +167,13 @@ public class MessMap extends InputAdapter implements TileBasedMap {
 
         // PC Settings
         RayHandler.useDiffuseLight(true);
-        rayHandler = new RayHandler(_world);
+        rayHandler = new RayHandler(this.world);
         rayHandler.setCombinedMatrix(_camera.combined);
-        //rayHandler.setAmbientLight(0.05f, 0.05f, 0.1f, 1f);
         rayHandler.setShadows(true);
         rayHandler.setBlur(false);
         rayHandler.setCulling(true);
 
+        // Our pathfinder!
         _aStarPathFinder = new AStarPathFinder(this, 32, false);
     }
 
@@ -161,50 +188,83 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         _activeCells.clear();
         _activeCells = null;
 
-        _bodyByCell.clear();
-        _bodyByCell = null;
-
-        _boxByCell.clear();
-        _boxByCell = null;
+        Iterator itr = _gameObjects.iterator();
+        while(itr.hasNext())
+        {
+            GameObject obj = (GameObject) itr.next();
+            obj.dispose();
+        }
 
         _gameObjectByCell.clear();
         _gameObjectByCell = null;
 
         _aStarPathFinder = null;
+
+        _atlas.dispose();
+        _atlas = null;
     }
 
     public void updateAndRender(Matrix4 cameraMatrix)
     {
-        TiledMapTileLayer.Cell mapCell;
-        Body body;
-
-        // TODO: Only do this if moving camera!
-        for (int y = 0; y < height; y++)
+        Iterator itr = _gameObjects.iterator();
+        while(itr.hasNext())
         {
-            for (int x = 0; x < width; x++)
+            GameObject obj = (GameObject) itr.next();
+
+            if (obj.type == GameObject.TYPE_BUILDING)
             {
-                mapCell = _buildingLayer.getCell(x, y);
-                if (mapCell == null) continue;
-
-                body = _bodyByCell.get(mapCell);
-                if (body == null) continue;
-
-                boolean inFrustum = _camera.frustum.boundsInFrustum(_boxByCell.get(mapCell));
-                if (inFrustum && !_activeCells.contains(mapCell))
+                Body body = obj.body;
+                BoundingBox box = obj.boundingBox;
+                boolean inFrustum = _camera.frustum.boundsInFrustum(box);
+                if (inFrustum && !_activeCells.contains(obj))
                 {
                     body.setActive(true);
-                    _activeCells.add(mapCell);
+                    _activeCells.add(obj);
                 }
-                else if(!inFrustum && _activeCells.contains(mapCell))
+                else if(!inFrustum && _activeCells.contains(obj))
                 {
                     body.setActive(false);
-                    _activeCells.remove(mapCell);
+                    _activeCells.remove(obj);
                 }
             }
+            else if (obj.type == GameObject.TYPE_LIGHT_POINT || obj.type == GameObject.TYPE_LIGHT_CONE)
+            {
+                ((GameLight) obj).setActive(_currentAmbientLight < 0.3);
+            }
+        }
+
+        float _elapsedTime = Gdx.graphics.getDeltaTime();
+        _currentElapsedTOD += _elapsedTime;
+
+        // TODO: Day / Night cycle
+        if (_currentAmbientLight < MAX_LIGHT && !_gettingDark)
+        {
+            _setAmbientLight(_currentAmbientLight + LIGHT_DELTA * _elapsedTime);
+        }
+        else if (_currentAmbientLight >= MAX_LIGHT && !_gettingDark && _currentElapsedTOD >= DAY_NIGHT_LENGTH)
+        {
+            _gettingDark = true;
+            _currentElapsedTOD = 0;
+        }
+        else if (_gettingDark && _currentAmbientLight > MIN_LIGHT)
+        {
+            _setAmbientLight(_currentAmbientLight - LIGHT_DELTA * _elapsedTime);
+        }
+        else if (_gettingDark && _currentAmbientLight <= MIN_LIGHT && _currentElapsedTOD >= DAY_NIGHT_LENGTH)
+        {
+            _gettingDark = false;
+            _currentElapsedTOD = 0;
         }
 
         rayHandler.setCombinedMatrix(cameraMatrix);
         rayHandler.updateAndRender();
+    }
+
+    public void updateSprites(Batch batch)
+    {
+        // TODO: Iterate over all the players
+        // TODO: Check if they are in frustrum
+        _player.draw(batch);
     }
 
     @Override
@@ -234,15 +294,21 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         }
         else
         {
-            if (_entityToBuild == 0) return false;
+            if (_mode == 0) return false;
 
-            if (_entityToBuild == 1)
+            if (_mode == 1)
             {
                 if (_createBuildingComponent(_buildingSprites.get(1), tileX, tileY)) return true;
             }
-            else if (_entityToBuild == 2)
+            else if (_mode == 2)
             {
-                if (_createLight(_objectSprites.get(0), tileX, tileY)) return true;
+                if (_createLight(_objectSprites.get(0), _objectSprites.get(1), tileX, tileY)) return true;
+            }
+            else if (_mode == 3)
+            {
+                Path path = _aStarPathFinder.findPath(_player, (int) _player.getX() / tileWidth, (int) _player.getY() / tileHeight, tileX, tileY);
+                _player.setPath(path);
+                return true;
             }
         }
 
@@ -254,15 +320,19 @@ public class MessMap extends InputAdapter implements TileBasedMap {
     {
         if (keycode == 8)
         {
-            _entityToBuild = 1;
+            _mode = 1;
         }
         else if (keycode == 9)
         {
-            _entityToBuild = 2;
+            _mode = 2;
+        }
+        else if (keycode == 10)
+        {
+            _mode = 3;
         }
         else
         {
-            _entityToBuild = 0;
+            _mode = 0;
         }
 
         return false;
@@ -299,7 +369,7 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         groundBodyDef.type = BodyDef.BodyType.StaticBody;
         groundBodyDef.position.set((xPos + halfWidth) / MessGame.PIXELS_PER_METER,
                 (yPos + halfHeight) / MessGame.PIXELS_PER_METER);
-        Body groundBody = _world.createBody(groundBodyDef);
+        Body groundBody = world.createBody(groundBodyDef);
 
         PolygonShape environmentShape = new PolygonShape();
         environmentShape.setAsBox(halfWidth / MessGame.PIXELS_PER_METER, halfHeight / MessGame.PIXELS_PER_METER);
@@ -308,8 +378,11 @@ public class MessMap extends InputAdapter implements TileBasedMap {
 
         BoundingBox box = new BoundingBox(new Vector3(xPos, yPos, 0), new Vector3(xPos + tileWidth, yPos + tileHeight, 0));
 
-        _bodyByCell.put(cell, groundBody);
-        _boxByCell.put(cell, box);
+        // TODO: Pool game objects
+        GameObject gameObject = new GameObject();
+        gameObject.init(GameObject.TYPE_BUILDING, groundBody, box);
+        _gameObjectByCell.put(cell, gameObject);
+        _gameObjects.add(gameObject);
 
         return true;
     }
@@ -319,34 +392,33 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         Cell previousCell = _buildingLayer.getCell(x, y);
         if (previousCell == null || previousCell.getTile().getId() != 1) return false;
 
-        Body body = _bodyByCell.get(previousCell);
-        if (body != null) _world.destroyBody(body);
-        _bodyByCell.remove(previousCell);
+        GameObject gameObject = _gameObjectByCell.get(previousCell);
+        if (_activeCells.contains(gameObject)) _activeCells.remove(gameObject);
+        _gameObjects.removeValue(gameObject, true);
 
-        BoundingBox box = _boxByCell.get(previousCell);
-        _boxByCell.remove(previousCell);
-
-        if (_activeCells.contains(previousCell)) _activeCells.remove(previousCell);
+        gameObject.dispose();
 
         _buildingLayer.setCell(x, y, null);
 
         return true;
     }
 
-    private boolean _createLight(Sprite sprite, int x, int y)
+    // Pass in config data
+    private boolean _createLight(Sprite spriteOn, Sprite spriteOff, int x, int y)
     {
-        if (_buildingLayer.getCell(x, y) != null) return false;
+        Cell cell = _buildingLayer.getCell(x, y);
+        if (cell == null) cell = new Cell();
 
-        GameLight light = new GameLight(sprite, GameLight.TYPE_POINT, rayHandler, NUM_RAYS, new Color(0, 0, 1, 0.5f), (32 * 8) / MessGame.PIXELS_PER_METER);
+        // TODO: Pool light objects
+        GameLight light = new GameLight();
+        light.init(cell, spriteOn, spriteOff, GameLight.TYPE_LIGHT_POINT, rayHandler);
+        light.setDistance((32 * 8) / MessGame.PIXELS_PER_METER);
+        light.setColor(new Color(.8f, .8f, .8f, 0.5f));
         light.setPosition(((x * tileWidth) + (tileWidth / 2)) / MessGame.PIXELS_PER_METER, ((y * tileHeight) + (tileHeight / 2)) / MessGame.PIXELS_PER_METER);
-
-        Cell cell = new Cell();
-        StaticTiledMapTile tile = new StaticTiledMapTile(sprite);
-        tile.setId(2);
-        cell.setTile(tile);
 
         _buildingLayer.setCell(x, y, cell);
         _gameObjectByCell.put(cell, light);
+        _gameObjects.add(light);
 
         return true;
     }
@@ -357,6 +429,8 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         if (previousCell == null || previousCell.getTile().getId() != 2) return false;
 
         GameLight light = (GameLight)_gameObjectByCell.get(previousCell);
+        _gameObjects.removeValue(light, true);
+
         light.dispose();
         _gameObjectByCell.remove(previousCell);
 
@@ -365,16 +439,32 @@ public class MessMap extends InputAdapter implements TileBasedMap {
         return true;
     }
 
+    private void _setAmbientLight(float amount)
+    {
+        _currentAmbientLight = amount;
+
+        if (_currentAmbientLight < MIN_LIGHT)
+        {
+            _currentAmbientLight = MIN_LIGHT;
+        }
+        else if (_currentAmbientLight > MAX_LIGHT)
+        {
+            _currentAmbientLight = MAX_LIGHT;
+        }
+
+        rayHandler.setAmbientLight(_currentAmbientLight, _currentAmbientLight, _currentAmbientLight, 1f);
+    }
+
     // A* Functions!
 
     @Override
     public int getWidthInTiles() {
-        return 0;
+        return width;
     }
 
     @Override
     public int getHeightInTiles() {
-        return 0;
+        return height;
     }
 
     @Override
@@ -383,12 +473,21 @@ public class MessMap extends InputAdapter implements TileBasedMap {
     }
 
     @Override
-    public boolean blocked(PathFindingContext context, int tx, int ty) {
+    public boolean blocked(PathFindingContext context, int tx, int ty)
+    {
+        TiledMapTileLayer.Cell cell = _buildingLayer.getCell(tx, ty);
+
+        if (cell != null)
+        {
+            int id = cell.getTile().getId();
+            if (id == 1) return true;
+        }
+
         return false;
     }
 
     @Override
     public float getCost(PathFindingContext context, int tx, int ty) {
-        return 0;
+        return 1;
     }
 }
