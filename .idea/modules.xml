@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Mess/Mess.iml" filepath="$PROJECT_DIR$/Mess/Mess.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Mess-android/Mess-android.iml" filepath="$PROJECT_DIR$/Mess-android/Mess-android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Mess-desktop/Mess-desktop.iml" filepath="$PROJECT_DIR$/Mess-desktop/Mess-desktop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Mess-html/Mess-html.iml" filepath="$PROJECT_DIR$/Mess-html/Mess-html.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Mess-robovm/Mess-robovm.iml" filepath="$PROJECT_DIR$/Mess-robovm/Mess-robovm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MessGame.iml" filepath="$PROJECT_DIR$/.idea/modules/MessGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/desktop/desktop.iml" filepath="$PROJECT_DIR$/.idea/modules/desktop/desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/html/html.iml" filepath="$PROJECT_DIR$/.idea/modules/html/html.iml" />
     </modules>
   </component>
 </project>
-

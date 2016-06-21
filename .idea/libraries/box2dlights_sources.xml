@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="box2dlights-sources">
-    <CLASSES />
-    <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/Mess/libs/box2dlights-sources.jar!/" />
-    </SOURCES>
-  </library>
-</component>
