@@ -19,8 +19,6 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
@@ -99,6 +97,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
     public RayHandler rayHandler;
 
     public static World world;
+
+
 
     public MessMap(OrthographicCamera camera, World world)
     {
