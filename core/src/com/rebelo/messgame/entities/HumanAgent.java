@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
+import com.rebelo.messgame.controllers.IAgentController;
 import com.rebelo.messgame.entities.states.HumanState;
 import eos.good.Good;
 
@@ -23,10 +24,15 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     // TODO: Disable steering behaviour while in vehicle
     // TODO: Hide agent while in vehicle
 
-    StateMachine<HumanAgent, HumanState> stateMachine = new DefaultStateMachine<HumanAgent, HumanState>(this, HumanState.PHYSIOLIGICAL);
+    StateMachine<HumanAgent, HumanState> _stateMachine = new DefaultStateMachine<HumanAgent, HumanState>(this, HumanState.PHYSIOLIGICAL);
+    IAgentController _controller;
 
     public HumanAgent(Sprite sprite, Body body, boolean independentFacing, int radiusInPixels) {
         super(sprite, body, independentFacing, radiusInPixels / MessGame.PIXELS_PER_METER);
+    }
+
+    public void setController(IAgentController controller) {
+        _controller = controller;
     }
 
     public void wander() {

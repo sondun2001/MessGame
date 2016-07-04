@@ -1,27 +1,82 @@
 #
-# Dog tree
+# Human tree
 #
 
-# Alias definitions
-import bark:"com.badlogic.gdx.ai.tests.btree.dog.BarkTask"
-import care:"com.badlogic.gdx.ai.tests.btree.dog.CareTask"
-import play:"com.badlogic.gdx.ai.tests.btree.dog.PlayTask"
-import mark:"com.badlogic.gdx.ai.tests.btree.dog.MarkTask"
-import walk:"com.badlogic.gdx.ai.tests.btree.dog.WalkTask"
-import rest:"com.badlogic.gdx.ai.tests.btree.dog.RestTask"
+subtree name:"isBiologicalNeedsMet?"
+  invert
+    parallel policy:"selector"
+      isThirsty?
+      isHungry?
+      hasNoShelter?
 
-# Tree definition (note that root is optional)
-root
+subtree name:"isSafetyNeedsMet?"
+  invert
+    parallel policy:"selector"
+      isBadWeather?
+      isAggressorNearby?
+      isPoliticalChaos?
+      isWorkNotSecure?
+
+subtree name:"isLoveNeedsMet?"
+  invert
+    parallel policy:"selector"
+      hasNoFriends?
+      hasNoPartner?
+      doesNotBelong?
+
+subtree name:"satisfyBiologicalNeeds"
+  dynamicGuardSelector
+    (isThirsty?) useWater
+    (isHungry?) useFood
+    (hasNoAccessToWater?) $findAndStoreWater # is at least aware of water location, store if possible
+    (hasNoAccessToFood?) $findAndStoreFood # is at least aware of food location, store if possible
+    (hasNoShelter?) $findShelter
+
+subtree name:"satisfySafetyNeeds"
+  dynamicGuardSelector
+    (isAggressorNearby?) $fightOrFlight
+    (isBadWeather?) seekShelter
+    (isPoliticalChaos) $attemptRestoreOrder
+    (isWorkNotSecure) $findWork
+
+subtree name:"satisfyLoveNeeds"
+  dynamicGuardSelector
+    (hasNoFriends?) $fightOrFlight
+    (hasNoPartner?) seekShelter
+    (doesNotBelong) $attemptRestoreOrder
+
+subtree name:"fightOrFlight"
+  sequence
+    calculatePathToHuman
+    followPath gait:"run"
+    whine
+    parallel policy:"selector"
+      wait seconds:"uniform,10,25"
+      lieDown
+    whine
+    parallel policy:"selector"
+      wait seconds:"uniform,5,9"
+      sit
+    setAlreadyCriedForHumanDeath   # this makes the subtree's guard fail; the dog will start acting on his own
+
+subtree name:"attemptRestoreOrder"
+
+subtree name:"findWork"
+
+subtree name:"actOnYourOwn"
   selector
-    parallel
-      care urgentProb:0.8
-      com.badlogic.gdx.ai.tests.btree.dog.PlayTask # fully qualified task
-    randomSelector
-      untilSuccess  # find some trees to pee
-        sequence
-          bark times:"uniform,1,2"
-          walk
-          mark
-      parallel policy:"selector"  # sleep with random timeout
-        wait seconds:"triangular,2.5,5.5"
-        rest
+    (random success:0.1) piss
+    parallel policy:"selector"
+      wait seconds:"uniform,3,6"
+      randomSelector
+        wander gait:"run"
+        wander gait:"walk"
+        lieDown
+        sit
+
+root
+  dynamicGuardSelector
+    ($isBiologicalNeedsMet?)       $satisfyBiologicalNeeds
+    ($isSafetyNeedsMet?)           $satisfySafetyNeeds
+    ($isLoveNeedsMet?)             $satisfyLoveNeeds
+    ()                             $actOnYourOwn  # fallback behavior (no guard)

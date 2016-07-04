@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.rebelo.messgame.MessGame;
+import com.rebelo.messgame.controllers.AIAgentController;
 import com.rebelo.messgame.entities.HumanAgent;
 import com.rebelo.messgame.map.MessMap;
 import com.rebelo.messgame.models.Agent;
@@ -48,6 +49,9 @@ public class HumanAgentFactory {
 
         circleShape.dispose();
 
-        return new HumanAgent(sprite, characterBody, true, radiusInPixels);
+        HumanAgent humanAgent = new HumanAgent(sprite, characterBody, true, radiusInPixels);
+        humanAgent.setController(new AIAgentController(humanAgent));
+
+        return agent;
     }
 }
