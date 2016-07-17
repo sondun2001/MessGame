@@ -84,7 +84,7 @@ public class MessGame implements ApplicationListener
         _renderer = new OrthogonalTiledMapRenderer(_messMap.getMap());
         _tileMapSpriteBatch = _renderer.getBatch();
 
-        _box2dRenderer = new Box2DDebugRenderer();
+        //_box2dRenderer = new Box2DDebugRenderer();
 
         _font = new BitmapFont();
 	}
@@ -93,7 +93,7 @@ public class MessGame implements ApplicationListener
 	public void dispose() {
         _batch.dispose();
 
-        _box2dRenderer.dispose();
+        //_box2dRenderer.dispose();
         _world.dispose();
 	}
 

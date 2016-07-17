@@ -6,10 +6,10 @@ package com.rebelo.messgame.models;
  * Created by sondu on 6/13/2016.
  */
 public class Agent {
-    private float _hunger = 0;
-    private float _thirst = 0;
-    private float _fatigue = 0;
-    private float _happiness = 0;
+    public float hunger = 0;
+    public float thirst = 0;
+    public float fatigue = 0;
+    public float happiness = 0;
 
     // TODO: Array of agents that matter, and relationship state
 }

@@ -11,6 +11,7 @@ import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.controllers.IAgentController;
 import com.rebelo.messgame.entities.states.HumanState;
+import com.rebelo.messgame.models.Agent;
 import eos.good.Good;
 
 /**
@@ -27,8 +28,18 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     StateMachine<HumanAgent, HumanState> _stateMachine = new DefaultStateMachine<HumanAgent, HumanState>(this, HumanState.PHYSIOLIGICAL);
     IAgentController _controller;
 
+    private Agent _agent;
+
     public HumanAgent(Sprite sprite, Body body, boolean independentFacing, int radiusInPixels) {
         super(sprite, body, independentFacing, radiusInPixels / MessGame.PIXELS_PER_METER);
+    }
+
+    public void setModel(Agent agent) {
+        _agent = agent;
+    }
+
+    public Agent getModel() {
+        return _agent;
     }
 
     public void setController(IAgentController controller) {

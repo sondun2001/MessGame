@@ -1,0 +1,86 @@
+#
+# Human tree
+#
+
+import isThirsty?:"com.rebelo.messgame.ai.human.IsThirstyCondition"
+import isHungry?:"com.rebelo.messgame.ai.human.IsHungryCondition"
+import isHomeless?:"com.rebelo.messgame.ai.human.IsHomelessCondition"
+
+subtree name:"isBiologicalNeedsMet?"
+  invert
+    parallel policy:"selector"
+      isThirsty?
+      isHungry?
+      isHomeless?
+
+subtree name:"isSafetyNeedsMet?"
+  invert
+    parallel policy:"selector"
+      isBadWeather?
+      isAggressorNearby?
+      isPoliticalChaos?
+      isWorkNotSecure?
+
+subtree name:"isLoveNeedsMet?"
+  invert
+    parallel policy:"selector"
+      hasNoFriends?
+      hasNoPartner?
+      doesNotBelong?
+
+subtree name:"satisfyBiologicalNeeds"
+  dynamicGuardSelector
+    (isThirsty?) useWater
+    (isHungry?) useFood
+    (hasNoAccessToWater?) $findAndStoreWater # is at least aware of water location, store if possible
+    (hasNoAccessToFood?) $findAndStoreFood # is at least aware of food location, store if possible
+    (isHomeless?) $findShelter
+
+subtree name:"satisfySafetyNeeds"
+  dynamicGuardSelector
+    (isAggressorNearby?) $fightOrFlight
+    (isBadWeather?) seekShelter
+    (isPoliticalChaos) $attemptRestoreOrder
+    (isWorkNotSecure) $findWork
+
+subtree name:"satisfyLoveNeeds"
+  dynamicGuardSelector
+    (hasNoFriends?) $fightOrFlight
+    (hasNoPartner?) seekShelter
+    (doesNotBelong) $attemptRestoreOrder
+
+subtree name:"fightOrFlight"
+  sequence
+    calculatePathToHuman
+    followPath gait:"run"
+    whine
+    parallel policy:"selector"
+      wait seconds:"uniform,10,25"
+      lieDown
+    whine
+    parallel policy:"selector"
+      wait seconds:"uniform,5,9"
+      sit
+    setAlreadyCriedForHumanDeath   # this makes the subtree's guard fail; the dog will start acting on his own
+
+subtree name:"attemptRestoreOrder"
+
+subtree name:"findWork"
+
+subtree name:"actOnYourOwn"
+  selector
+    (random success:0.1) piss
+    parallel policy:"selector"
+      wait seconds:"uniform,3,6"
+      randomSelector
+        wander gait:"run"
+        wander gait:"walk"
+        lieDown
+        sit
+
+root
+  dynamicGuardSelector
+    ($isBiologicalNeedsMet?)       $satisfyBiologicalNeeds
+    ($isSafetyNeedsMet?)           $satisfySafetyNeeds
+    ($isLoveNeedsMet?)             $satisfyLoveNeeds
+    ()                             $actOnYourOwn  # fallback behavior (no guard)

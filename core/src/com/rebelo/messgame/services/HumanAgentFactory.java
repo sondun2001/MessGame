@@ -52,6 +52,6 @@ public class HumanAgentFactory {
         HumanAgent humanAgent = new HumanAgent(sprite, characterBody, true, radiusInPixels);
         humanAgent.setController(new AIAgentController(humanAgent));
 
-        return agent;
+        return humanAgent;
     }
 }
