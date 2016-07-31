@@ -74,6 +74,26 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         super.update(deltaTime);
     }
 
+    public void previousWeapon () {
+
+    }
+
+    public void nextWeapon () {
+
+    }
+
+    public void pickUp () {
+
+    }
+
+    public void build () {
+
+    }
+
+    public void fire () {
+
+    }
+
     // TODO: Decrease fatigue
     public void rest() {
 
