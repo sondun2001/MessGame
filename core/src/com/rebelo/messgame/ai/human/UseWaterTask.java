@@ -16,6 +16,7 @@
 
 package com.rebelo.messgame.ai.human;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.btree.LeafTask;
 import com.badlogic.gdx.ai.btree.Task;
 import com.rebelo.messgame.entities.HumanAgent;
@@ -27,11 +28,11 @@ import com.rebelo.messgame.entities.HumanAgent;
  */
 public class UseWaterTask extends LeafTask<HumanAgent> {
 
-	public UseWaterTask() {
-
+	@Override
+	public void start () {
+		Gdx.app.debug("UseWaterTask", "Started");
 	}
 
-	// TODO: How do we know if the human has shelter?
 	@Override
 	public Status execute () {
 		return Status.FAILED;

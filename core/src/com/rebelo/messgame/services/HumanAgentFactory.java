@@ -50,7 +50,7 @@ public class HumanAgentFactory {
         circleShape.dispose();
 
         HumanAgent humanAgent = new HumanAgent(sprite, characterBody, true, radiusInPixels);
-        humanAgent.setController(new AIAgentController(humanAgent));
+        humanAgent.setModel(agent);
 
         return humanAgent;
     }

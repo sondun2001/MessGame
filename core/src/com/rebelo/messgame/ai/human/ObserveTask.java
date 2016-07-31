@@ -1,5 +1,6 @@
 package com.rebelo.messgame.ai.human;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.btree.LeafTask;
 import com.badlogic.gdx.ai.btree.Task;
 import com.badlogic.gdx.ai.btree.annotation.TaskAttribute;
@@ -17,12 +18,13 @@ public class ObserveTask extends LeafTask<HumanAgent> {
 
     @Override
     public void start () {
+        Gdx.app.debug("ObserveTask", "Started");
         HumanAgent human = getObject();
     }
 
     @Override
     public Status execute() {
-        return null;
+        return Status.FAILED;
     }
 
     @Override

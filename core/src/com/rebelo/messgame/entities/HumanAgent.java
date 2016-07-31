@@ -65,6 +65,15 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         this.setSteeringBehavior(wander);
     }
 
+    @Override
+    public void update(float deltaTime) {
+        if (_controller != null) {
+            _controller.update(deltaTime);
+        }
+
+        super.update(deltaTime);
+    }
+
     // TODO: Decrease fatigue
     public void rest() {
 

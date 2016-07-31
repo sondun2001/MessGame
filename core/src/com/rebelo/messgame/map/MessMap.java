@@ -24,10 +24,13 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.rebelo.messgame.MessGame;
+import com.rebelo.messgame.controllers.AIAgentController;
+import com.rebelo.messgame.controllers.GamepadAgentController;
 import com.rebelo.messgame.entities.*;
 import com.rebelo.messgame.models.Agent;
 import com.rebelo.messgame.services.BuildingFactory;
 import com.rebelo.messgame.services.HumanAgentFactory;
+import com.rebelo.messgame.utils.GamePadProcessor;
 import com.rebelo.messgame.utils.OrthoCamController;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
 import org.newdawn.slick.util.pathfinding.Path;
@@ -60,6 +63,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
     private Vector3 _worldCoordinates;
     private InputMultiplexer _multiplexer;
     private AStarPathFinder _aStarPathFinder;
+    private GamePadProcessor _gamePadProcessor;
 
     // Build Mode Variables
     private int _mode = 0;
@@ -88,6 +92,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
 
     private AISprite _player;
     private HumanAgent _aiAgent;
+    private HumanAgent _controlledAgent;
 
     public int width;
     public int height;
@@ -97,8 +102,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
     public RayHandler rayHandler;
 
     public static World world;
-
-
 
     public MessMap(OrthographicCamera camera, World world)
     {
@@ -120,7 +123,12 @@ public class MessMap extends InputAdapter implements TileBasedMap
         _player = new AISprite(_objectSprites.get(1), this);
         _player.setPosition(0, 0);
 
+        // TODO: How will we manage agent creation?
         _aiAgent = HumanAgentFactory.getInstance().createAgent(_objectSprites.get(1), new Agent(), this, 30, 30);
+        _aiAgent.setController(new AIAgentController(_aiAgent));
+
+        _controlledAgent = HumanAgentFactory.getInstance().createAgent(_objectSprites.get(1), new Agent(), this, 60, 60);
+        _controlledAgent.setController(new GamepadAgentController(_controlledAgent));
 
         _map = new TiledMap();
         layers = _map.getLayers();
@@ -136,6 +144,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
         // Camera Setup
         _camera = camera;
         _cameraController = new OrthoCamController(this, camera);
+
+        _gamePadProcessor = new GamePadProcessor(this);
 
         // Input processing
         _multiplexer = new InputMultiplexer();
@@ -181,7 +191,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
         // Our pathfinder!
         _aStarPathFinder = new AStarPathFinder(this, 32, false);
     }
-
 
     public void dispose()
     {
@@ -241,6 +250,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
 
         // TODO: Update this less frequent?
         _aiAgent.update(Gdx.graphics.getDeltaTime());
+        _controlledAgent.update(Gdx.graphics.getDeltaTime());
 
         // Keep track of day and time
         processDayAndTime();
@@ -283,10 +293,11 @@ public class MessMap extends InputAdapter implements TileBasedMap
         // TODO: Check if they are in frustrum
         _player.draw(batch);
         _aiAgent.draw(batch);
+        _controlledAgent.draw(batch);
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button)
+    public boolean touchUp(int screenX, int screenY, int pointer, int button)
     {
         _camera.unproject(_worldCoordinates.set(screenX, screenY, 0));
 

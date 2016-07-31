@@ -14,13 +14,12 @@ import wander:"com.rebelo.messgame.ai.human.WanderTask"
 import observe:"com.rebelo.messgame.ai.human.ObserveTask"
 
 subtree name:"isBiologicalNeedsMet?"
-  invert
-    parallel policy:"selector"
-      isThirsty?
-      isHungry?
-      isHomeless?
-      hasNoAccessToWater?
-      hasNoAccessToFood?
+  parallel policy:"selector"
+    isThirsty?
+    isHungry?
+    #isHomeless?
+    #hasNoAccessToWater?
+    #hasNoAccessToFood?
 
 subtree name:"satisfyBiologicalNeeds"
   dynamicGuardSelector

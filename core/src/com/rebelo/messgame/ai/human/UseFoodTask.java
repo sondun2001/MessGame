@@ -16,6 +16,7 @@
 
 package com.rebelo.messgame.ai.human;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.btree.LeafTask;
 import com.badlogic.gdx.ai.btree.Task;
 import com.rebelo.messgame.entities.HumanAgent;
@@ -27,8 +28,9 @@ import com.rebelo.messgame.entities.HumanAgent;
  */
 public class UseFoodTask extends LeafTask<HumanAgent> {
 
-	public UseFoodTask() {
-
+	@Override
+	public void start () {
+		Gdx.app.debug("UseFoodTask", "Started");
 	}
 
 	@Override

@@ -8,4 +8,8 @@ import com.rebelo.messgame.entities.IAgent;
  */
 public class InputAgentController implements IAgentController {
 
+    @Override
+    public void update(float delta) {
+
+    }
 }

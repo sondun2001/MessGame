@@ -13,10 +13,16 @@ import java.io.Reader;
  */
 public class AIAgentController implements IAgentController {
 
+    static final double DT = 1/60.0;
+    static final int MAX_UPDATES_PER_FRAME = 3; //for preventing spiral of death
+    private long currentTimeMillis;
+
     private HumanAgent _humanAgent;
     private BehaviorTree<HumanAgent> _humanBehaviourTree;
 
     public AIAgentController(HumanAgent humanAgent) {
+        currentTimeMillis = System.currentTimeMillis();
+
         _humanAgent = humanAgent;
 
         // Parse human behaviour tree
@@ -32,7 +38,14 @@ public class AIAgentController implements IAgentController {
     }
 
     public void update(float delta) {
+        long newTimeMillis = System.currentTimeMillis();
+        float frameTimeSeconds = (newTimeMillis - currentTimeMillis) / 1000f;
+
+        if (frameTimeSeconds > 1f) {
+            currentTimeMillis = newTimeMillis;
+
+            _humanBehaviourTree.step();
+        }
         // TODO: How quickly do we step? Ask a service if we are ready for AI tick
-        _humanBehaviourTree.step();
     }
 }

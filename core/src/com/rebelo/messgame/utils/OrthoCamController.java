@@ -19,6 +19,7 @@ public class OrthoCamController extends InputAdapter {
     final float MAX_ZOOM = 2f;
 
     private MessMap _messMap;
+    private boolean _dragging;
 
     public OrthoCamController (MessMap map, OrthographicCamera camera)
     {
@@ -38,13 +39,19 @@ public class OrthoCamController extends InputAdapter {
             _clampCamera();
         }
         last.set(x, y, 0);
-        return false;
+        _dragging = true;
+        return true;
     }
 
     @Override
     public boolean touchUp (int x, int y, int pointer, int button)
     {
-        last.set(-1, -1, -1);
+        if (_dragging) {
+            last.set(-1, -1, -1);
+            _dragging = false;
+            return true;
+        }
+
         return false;
     }
 

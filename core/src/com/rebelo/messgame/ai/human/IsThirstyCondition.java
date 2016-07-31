@@ -27,10 +27,6 @@ import com.rebelo.messgame.entities.HumanAgent;
  */
 public class IsThirstyCondition extends LeafTask<HumanAgent> {
 
-	public IsThirstyCondition() {
-	}
-
-
 	@Override
 	public Status execute () {
 		return getObject().getModel().thirst > 0.8 ? Status.SUCCEEDED : Status.FAILED;

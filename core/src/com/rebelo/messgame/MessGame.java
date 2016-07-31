@@ -59,7 +59,6 @@ public class MessGame implements ApplicationListener
         if (Gdx.app.getType() == Application.ApplicationType.Desktop)
         {
             // set resolution to default and set full-screen to true
-            //Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height, true);
             Graphics.DisplayMode mode = Gdx.graphics.getDisplayMode();
             // set the window to fullscreen mode
             Gdx.graphics.setFullscreenMode(mode);
