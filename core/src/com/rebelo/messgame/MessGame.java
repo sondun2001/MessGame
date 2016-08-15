@@ -61,7 +61,7 @@ public class MessGame implements ApplicationListener
             // set resolution to default and set full-screen to true
             Graphics.DisplayMode mode = Gdx.graphics.getDisplayMode();
             // set the window to fullscreen mode
-            Gdx.graphics.setFullscreenMode(mode);
+            //Gdx.graphics.setFullscreenMode(mode);
         }
 
         Gdx.app.setLogLevel(Application.LOG_DEBUG);

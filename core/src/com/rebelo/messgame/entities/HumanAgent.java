@@ -11,7 +11,9 @@ import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.controllers.IAgentController;
 import com.rebelo.messgame.entities.states.HumanState;
+import com.rebelo.messgame.map.MessMap;
 import com.rebelo.messgame.models.Agent;
+import com.rebelo.messgame.services.ProjectileFactory;
 import eos.good.Good;
 
 /**
@@ -26,12 +28,21 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     // TODO: Hide agent while in vehicle
 
     StateMachine<HumanAgent, HumanState> _stateMachine = new DefaultStateMachine<HumanAgent, HumanState>(this, HumanState.PHYSIOLIGICAL);
+
+    public IAgentController getController() {
+        return _controller;
+    }
+
     IAgentController _controller;
 
     private Agent _agent;
+    private MessMap _map;
+    private Sprite _currentProjectileSprite;
 
-    public HumanAgent(Sprite sprite, Body body, boolean independentFacing, int radiusInPixels) {
+    public HumanAgent(Sprite sprite, Body body, boolean independentFacing, int radiusInPixels, MessMap map) {
         super(sprite, body, independentFacing, radiusInPixels / MessGame.PIXELS_PER_METER);
+        _map = map;
+        _currentProjectileSprite = map.getAtlas().createSprite("light_on");
     }
 
     public void setModel(Agent agent) {
@@ -43,7 +54,20 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     }
 
     public void setController(IAgentController controller) {
+        if (_controller != null) {
+            resetBehvaiour();
+            _controller.destroy();
+        }
+
         _controller = controller;
+    }
+
+    private void resetBehvaiour() {
+        if (this.steeringBehavior != null) {
+            this.steeringBehavior.setEnabled(false);
+        }
+
+        this.setSteeringBehavior(null);
     }
 
     public void wander() {
@@ -53,14 +77,14 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         this.setMaxAngularSpeed(5);
 
         Wander wander = new Wander<Vector2>(this) //
-                .setFaceEnabled(true) // We want to use Face internally (independent facing is on)
-                .setAlignTolerance(0.001f) // Used by Face
-                .setDecelerationRadius(1) // Used by Face
-                .setTimeToTarget(0.1f) // Used by Face
-                .setWanderOffset(3) //
-                .setWanderOrientation(3) //
-                .setWanderRadius(1) //
-                .setWanderRate(MathUtils.PI2 * 4);
+        .setFaceEnabled(true) // We want to use Face internally (independent facing is on)
+        .setAlignTolerance(0.001f) // Used by Face
+        .setDecelerationRadius(1) // Used by Face
+        .setTimeToTarget(0.1f) // Used by Face
+        .setWanderOffset(3) //
+        .setWanderOrientation(3) //
+        .setWanderRadius(1) //
+        .setWanderRate(MathUtils.PI2 * 4);
 
         this.setSteeringBehavior(wander);
     }
@@ -90,8 +114,29 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
 
     }
 
-    public void fire () {
+    public void fire (float forcePercent) {
+        // Get sprite from current selected weapon
+        float weaponForce = .7f * forcePercent;
 
+        // TODO: Get point from weapon
+        Vector2 pos = body.getWorldCenter();
+        float totalRotation = body.getAngle();
+
+        Vector2 direction = new Vector2();
+        direction.x = MathUtils.cos(totalRotation);
+        direction.y = MathUtils.sin(totalRotation);
+        if (direction.len() > 0) {
+            direction.nor();
+        }
+        //while ( totalRotation < -180 * MathUtils.degreesToRadians ) totalRotation += 360 * MathUtils.degreesToRadians;
+        //while ( totalRotation >  180 * MathUtils.degreesToRadians ) totalRotation -= 360 * MathUtils.degreesToRadians;
+        //float xImpulse = MathUtils.sin(totalRotation);
+        //float yImpulse = MathUtils.cos(totalRotation);
+        float offset = 15;
+        float xPos = pos.x + (direction.x * offset / MessGame.PIXELS_PER_METER);
+        float yPos = pos.y + (direction.y * offset / MessGame.PIXELS_PER_METER);
+
+        ProjectileFactory.getInstance().createProjectile(_currentProjectileSprite, _map, xPos, yPos, direction.x, direction.y, forcePercent);
     }
 
     // TODO: Decrease fatigue

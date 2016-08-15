@@ -18,22 +18,20 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.controllers.AIAgentController;
-import com.rebelo.messgame.controllers.GamepadAgentController;
 import com.rebelo.messgame.entities.*;
 import com.rebelo.messgame.models.Agent;
 import com.rebelo.messgame.services.BuildingFactory;
+import com.rebelo.messgame.services.ControllerManager;
 import com.rebelo.messgame.services.HumanAgentFactory;
-import com.rebelo.messgame.utils.GamePadProcessor;
+import com.rebelo.messgame.services.ProjectileFactory;
 import com.rebelo.messgame.utils.OrthoCamController;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
-import org.newdawn.slick.util.pathfinding.Path;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
 
@@ -50,6 +48,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
     public static final int LAYER_BUILDING = 1;
     public static final int LAYER_TALL = 2;
 
+    private static final int MAX_LOCAL_SLOTS = 4;
+
     private static final float MIN_LIGHT = 0.02f;
     private static final float MAX_LIGHT = 0.5f;
     private static final float LIGHT_DELTA = 0.1f;
@@ -63,7 +63,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
     private Vector3 _worldCoordinates;
     private InputMultiplexer _multiplexer;
     private AStarPathFinder _aStarPathFinder;
-    private GamePadProcessor _gamePadProcessor;
 
     // Build Mode Variables
     private int _mode = 0;
@@ -79,6 +78,10 @@ public class MessMap extends InputAdapter implements TileBasedMap
     private TiledMapTileLayer _buildingLayer;
     private TiledMapTileLayer _objectLayer;
 
+    public TextureAtlas getAtlas() {
+        return _atlas;
+    }
+
     // Sprites
     // TODO: Create map of sprites by name for each category
     private TextureAtlas _atlas;
@@ -90,9 +93,19 @@ public class MessMap extends InputAdapter implements TileBasedMap
     private ObjectSet<GameObject> _activeCells = new ObjectSet<GameObject>();
     private Array<GameObject> _gameObjects = new Array<GameObject>();
 
-    private AISprite _player;
-    private HumanAgent _aiAgent;
-    private HumanAgent _controlledAgent;
+    //private AISprite _player;
+    //private HumanAgent _aiAgent;
+    //private HumanAgent _controlledAgent;
+
+    private ControllerManager _controllerManager;
+
+    public Array<HumanAgent> getAgents() {
+        return _agents;
+    }
+
+    private Array<HumanAgent> _agents = new Array<HumanAgent>(true, MAX_LOCAL_SLOTS, HumanAgent.class);
+
+    // TODO: Create 4 agents. Assign either AI or Gamepad
 
     public int width;
     public int height;
@@ -106,6 +119,35 @@ public class MessMap extends InputAdapter implements TileBasedMap
     public MessMap(OrthographicCamera camera, World world)
     {
         this.world = world;
+        world.setContactListener(new ContactListener() {
+
+            @Override
+            public void beginContact(Contact contact) {
+                Fixture fixtureA = contact.getFixtureA();
+                Fixture fixtureB = contact.getFixtureB();
+
+                if (!fixtureA.isSensor() && !fixtureB.isSensor()) {
+                    Gdx.app.log("beginContact", "between " + fixtureA.toString() + " and " + fixtureB.toString());
+                }
+            }
+
+            @Override
+            public void endContact(Contact contact) {
+                Fixture fixtureA = contact.getFixtureA();
+                Fixture fixtureB = contact.getFixtureB();
+                //Gdx.app.log("endContact", "between " + fixtureA.toString() + " and " + fixtureB.toString());
+            }
+
+            @Override
+            public void preSolve(Contact contact, Manifold oldManifold) {
+            }
+
+            @Override
+            public void postSolve(Contact contact, ContactImpulse impulse) {
+            }
+        });
+
+        _controllerManager = new ControllerManager(this);
 
         // TODO: Download updated sprite sheet from server
         _atlas = new TextureAtlas("data/MessAssets.pack");
@@ -120,15 +162,23 @@ public class MessMap extends InputAdapter implements TileBasedMap
         _objectSprites.add(_atlas.createSprite("light_on"));
         _objectSprites.add(_atlas.createSprite("light_off"));
 
-        _player = new AISprite(_objectSprites.get(1), this);
-        _player.setPosition(0, 0);
+        //_player = new AISprite(_objectSprites.get(1), this);
+        //_player.setPosition(0, 0);
 
         // TODO: How will we manage agent creation?
-        _aiAgent = HumanAgentFactory.getInstance().createAgent(_objectSprites.get(1), new Agent(), this, 30, 30);
+        for (int i = 0; i < MAX_LOCAL_SLOTS; i++) {
+            HumanAgent agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 30, 30);
+            agent.setController(new AIAgentController(agent));
+            _agents.add(agent);
+        }
+
+        /*
+        _aiAgent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 30, 30);
         _aiAgent.setController(new AIAgentController(_aiAgent));
 
-        _controlledAgent = HumanAgentFactory.getInstance().createAgent(_objectSprites.get(1), new Agent(), this, 60, 60);
+        _controlledAgent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 60, 60);
         _controlledAgent.setController(new GamepadAgentController(_controlledAgent));
+        */
 
         _map = new TiledMap();
         layers = _map.getLayers();
@@ -144,8 +194,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
         // Camera Setup
         _camera = camera;
         _cameraController = new OrthoCamController(this, camera);
-
-        _gamePadProcessor = new GamePadProcessor(this);
 
         // Input processing
         _multiplexer = new InputMultiplexer();
@@ -248,14 +296,22 @@ public class MessMap extends InputAdapter implements TileBasedMap
             }
         }
 
-        // TODO: Update this less frequent?
-        _aiAgent.update(Gdx.graphics.getDeltaTime());
-        _controlledAgent.update(Gdx.graphics.getDeltaTime());
+        //_aiAgent.update(Gdx.graphics.getDeltaTime());
+        //_controlledAgent.update(Gdx.graphics.getDeltaTime());
+
+        Iterator agnetItr = _agents.iterator();
+        while(agnetItr.hasNext())
+        {
+            HumanAgent agent = (HumanAgent) agnetItr.next();
+            agent.update(Gdx.graphics.getDeltaTime());
+        }
+
+        ProjectileFactory.getInstance().update(Gdx.graphics.getDeltaTime());
 
         // Keep track of day and time
         processDayAndTime();
 
-        // TODO: Find alternative
+        // TODO: Find alternative?
         rayHandler.setCombinedMatrix(cameraMatrix);
         rayHandler.updateAndRender();
     }
@@ -289,11 +345,21 @@ public class MessMap extends InputAdapter implements TileBasedMap
 
     public void updateSprites(Batch batch)
     {
-        // TODO: Iterate over all the players
         // TODO: Check if they are in frustrum
-        _player.draw(batch);
-        _aiAgent.draw(batch);
-        _controlledAgent.draw(batch);
+
+        // Iterate over all the players
+        Iterator itr = _agents.iterator();
+        while(itr.hasNext())
+        {
+            HumanAgent agent = (HumanAgent) itr.next();
+            agent.draw(batch);
+        }
+
+        //_player.draw(batch);
+        //_aiAgent.draw(batch);
+        //_controlledAgent.draw(batch);
+
+        ProjectileFactory.getInstance().draw(batch);
     }
 
     @Override
@@ -335,8 +401,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
             }
             else if (_mode == 3)
             {
-                Path path = _aStarPathFinder.findPath(_player, (int) _player.getX() / tileWidth, (int) _player.getY() / tileHeight, tileX, tileY);
-                _player.setPath(path);
+                //Path path = _aStarPathFinder.findPath(_player, (int) _player.getX() / tileWidth, (int) _player.getY() / tileHeight, tileX, tileY);
+                //_player.setPath(path);
                 return true;
             }
         }

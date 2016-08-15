@@ -3,6 +3,7 @@ package com.rebelo.messgame.controllers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.btree.BehaviorTree;
 import com.badlogic.gdx.ai.btree.utils.BehaviorTreeParser;
+import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.StreamUtils;
 import com.rebelo.messgame.entities.HumanAgent;
 
@@ -11,7 +12,7 @@ import java.io.Reader;
 /**
  * Created by sondu on 7/3/2016.
  */
-public class AIAgentController implements IAgentController {
+public class AIAgentController implements IAgentController, Pool.Poolable {
 
     static final double DT = 1/60.0;
     static final int MAX_UPDATES_PER_FRAME = 3; //for preventing spiral of death
@@ -47,5 +48,16 @@ public class AIAgentController implements IAgentController {
             _humanBehaviourTree.step();
         }
         // TODO: How quickly do we step? Ask a service if we are ready for AI tick
+    }
+
+    @Override
+    public void destroy() {
+        reset();
+        _humanBehaviourTree = null;
+    }
+
+    @Override
+    public void reset() {
+        _humanBehaviourTree.reset();
     }
 }

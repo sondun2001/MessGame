@@ -6,4 +6,5 @@ package com.rebelo.messgame.controllers;
  */
 public interface IAgentController {
     void update(float delta);
+    void destroy();
 }

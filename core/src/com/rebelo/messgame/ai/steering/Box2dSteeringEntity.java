@@ -33,8 +33,8 @@ import com.rebelo.messgame.MessGame;
  * 
  * @author davebaol */
 public class Box2dSteeringEntity implements Steerable<Vector2> {
-	Sprite sprite;
-	Body body;
+	protected Sprite sprite;
+	protected Body body;
 
 	float boundingRadius;
 	boolean tagged;

@@ -1,7 +1,10 @@
 package com.rebelo.messgame.controllers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.controllers.*;
+import com.badlogic.gdx.controllers.Controller;
+import com.badlogic.gdx.controllers.ControllerListener;
+import com.badlogic.gdx.controllers.PovDirection;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -14,13 +17,12 @@ import com.rebelo.messgame.entities.HumanAgent;
  */
 public class GamepadAgentController implements IAgentController, ControllerListener {
 
-
     enum GamePad {
+        NONE,
         XBOX_ONE,
         XBOX_360,
         SHIELD
     }
-
 
     @Override
     public void connected(Controller controller) {
@@ -35,6 +37,7 @@ public class GamepadAgentController implements IAgentController, ControllerListe
     @Override
     public boolean buttonDown(Controller controller, int buttonCode) {
         Gdx.app.log("GamepadAgentController", Integer.toString(buttonCode));
+
         return false;
     }
 
@@ -45,7 +48,7 @@ public class GamepadAgentController implements IAgentController, ControllerListe
 
     @Override
     public boolean axisMoved(Controller controller, int axisCode, float value) {
-        Gdx.app.log("GamepadAgentController", axisCode + " " + value);
+        //Gdx.app.log("GamepadAgentController", axisCode + " " + value);
         return false;
     }
 
@@ -71,77 +74,94 @@ public class GamepadAgentController implements IAgentController, ControllerListe
 
     HumanAgent _humanAgent;
     Controller _agentController = null;
-    Vector2 currentVelocity;
-
-    GamePad gamePad;
-    int controllerNum;
+    Vector2 _currentVelocity;
+    //Vector2 _currentRotation = new Vector2(0f, 0f);
+    Vector2 _rotationTarget = new Vector2(0f, 0f);
+    GamePad _gamePad = GamePad.NONE;
+    float _firePercent;
 
     final static float INPUT_FORCE = 2f;
     final static float TURBO_FORCE = 2f;
     final static float MAX_VELOCITY = 10f;
     final static float DAMPENING = 0.8f;
+    final static float ROTATION_SPEED = 3f;
 
     public GamepadAgentController(HumanAgent humanAgent) {
         _humanAgent = humanAgent;
+    }
 
-        for (Controller controller : Controllers.getControllers()) {
-            Gdx.app.log("GamepadAgentController", controller.getName());
-            if (_agentController == null) {
-                _agentController = controller;
-
-                if (_agentController.getName().toLowerCase().contains("xbox") && _agentController.getName().contains("360")){
-                    gamePad = GamePad.XBOX_360;
-                } else if (_agentController.getName().toLowerCase().contains("xbox") && _agentController.getName().toLowerCase().contains("one")){
-                    gamePad = GamePad.XBOX_ONE;
-                }
-
-                controller.addListener(this);
-                break;
-            }
+    // Assign controller to agent
+    public void setGamepad(Controller controller) {
+        if (_agentController != null) {
+            _agentController.removeListener(this);
         }
 
-        Controllers.addListener(new ControllerAdapter() {
-            @Override
-            public void connected(Controller controller) {
-                Gdx.app.log("GamepadAgentController", "Connected");
-                if (_agentController == null) {
-                    _agentController = controller;
-                    controller.addListener(this);
-                }
-            }
+        _agentController = controller;
 
-            public void disconnected(Controller controller) {
-                Gdx.app.log("GamepadAgentController", "Disconnected");
-                if (_agentController == controller) {
-                    controller.removeListener(this);
-                }
-            }
-        }); // receives events from all controllers
+        if (_agentController.getName().toLowerCase().contains("xbox") && _agentController.getName().contains("360")){
+            _gamePad = GamePad.XBOX_360;
+        } else if (_agentController.getName().toLowerCase().contains("xbox") && _agentController.getName().toLowerCase().contains("one")){
+            _gamePad = GamePad.XBOX_ONE;
+        }
+
+        controller.addListener(this);
+    }
+
+    public void removeGamepad() {
+        if (_agentController != null) {
+            _agentController.removeListener(this);
+        }
+
+        _rotationTarget.set(0f, 0f);
+        _gamePad = GamePad.NONE;
     }
 
     @Override
     public void update(float delta) {
         Body body = _humanAgent.getBody();
-        //Vector2 pos = body.getWorldCenter();
 
-        currentVelocity = _humanAgent.getBody().getLinearVelocity();
+        _currentVelocity = _humanAgent.getBody().getLinearVelocity();
 
         if (_agentController != null) {
             float axisXValue = 0f;
             float axisYValue = 0f;
+            float rotateXValue = 0f;
+            float rotateYValue = 0f;
+
             float turboButton = 0f;
 
-            if (gamePad == GamePad.XBOX_360 || gamePad == GamePad.XBOX_ONE){
+            if (_gamePad == GamePad.XBOX_360 || _gamePad == GamePad.XBOX_ONE){
                 axisXValue = _agentController.getAxis(XBox360Pad.AXIS_LEFT_X);
                 axisYValue = _agentController.getAxis(XBox360Pad.AXIS_LEFT_Y);
+                rotateXValue = _agentController.getAxis(XBox360Pad.AXIS_RIGHT_X);
+                rotateYValue = _agentController.getAxis(XBox360Pad.AXIS_RIGHT_Y);
                 turboButton = _agentController.getAxis(XBox360Pad.AXIS_RIGHT_TRIGGER);
+
+                if (_agentController.getButton(XBox360Pad.BUTTON_RB)) {
+                    _firePercent += delta;
+                } else if (_firePercent > 0) {
+                    _humanAgent.fire(MathUtils.clamp(_firePercent, .2f, 1f));
+                    _firePercent = 0;
+                }
             }
 
-            float xVelocity = processAxis(axisXValue, currentVelocity.x, turboButton);
-            float yVelocity = processAxis(axisYValue * -1, currentVelocity.y, turboButton);
+            float xVelocity = processAxis(axisXValue, _currentVelocity.x, turboButton);
+            float yVelocity = processAxis(axisYValue * -1, _currentVelocity.y, turboButton);
 
             body.setLinearVelocity(xVelocity, yVelocity);
+
+            // Rotation values
+            _rotationTarget.set(rotateXValue, rotateYValue * -1);
+            //_currentRotation.lerp(_rotationTarget, delta * ROTATION_SPEED);
+            float rotation = MathUtils.atan2(_rotationTarget.y, _rotationTarget.x);
+            Vector2 pos = body.getWorldCenter();
+            body.setTransform(pos, rotation);
         }
+    }
+
+    @Override
+    public void destroy() {
+        removeGamepad();
     }
 
     float processAxis(float axisValue, float currentVelocity, float turboButton) {
@@ -151,7 +171,7 @@ public class GamepadAgentController implements IAgentController, ControllerListe
             velocity = (axisValue * INPUT_FORCE);
 
             if (turboButton > 0f) {
-                velocity *= (TURBO_FORCE * turboButton);
+                velocity *= ((TURBO_FORCE * turboButton) + 1);
             }
         }
 
