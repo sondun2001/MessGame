@@ -7,12 +7,15 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.utils.ObjectMap;
 import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.controllers.IAgentController;
 import com.rebelo.messgame.entities.states.HumanState;
 import com.rebelo.messgame.map.MessMap;
 import com.rebelo.messgame.models.Agent;
+import com.rebelo.messgame.objects.projectiles.equippables.IEquippable;
+import com.rebelo.messgame.objects.projectiles.equippables.Snowballs;
 import com.rebelo.messgame.services.ProjectileFactory;
 import eos.good.Good;
 
@@ -27,6 +30,13 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     // TODO: Disable steering behaviour while in vehicle
     // TODO: Hide agent while in vehicle
 
+    public enum Hand {
+        LEFT,
+        RIGHT
+    }
+
+    ObjectMap<Hand, IEquippable> _itemByHand = new ObjectMap<Hand, IEquippable>();
+
     StateMachine<HumanAgent, HumanState> _stateMachine = new DefaultStateMachine<HumanAgent, HumanState>(this, HumanState.PHYSIOLIGICAL);
 
     public IAgentController getController() {
@@ -37,12 +47,13 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
 
     private Agent _agent;
     private MessMap _map;
-    private Sprite _currentProjectileSprite;
 
     public HumanAgent(Sprite sprite, Body body, boolean independentFacing, int radiusInPixels, MessMap map) {
         super(sprite, body, independentFacing, radiusInPixels / MessGame.PIXELS_PER_METER);
         _map = map;
-        _currentProjectileSprite = map.getAtlas().createSprite("light_on");
+
+        // Equip snowball throwing by default!
+        _itemByHand.put(Hand.RIGHT, new Snowballs(map.getAtlas().createSprite("light_on"), map));
     }
 
     public void setModel(Agent agent) {
@@ -107,36 +118,50 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     }
 
     public void pickUp () {
+        // If 2 items equipped, or 1 item that requires 2 hands, put items away
+        IEquippable leftHandItem = _itemByHand.get(Hand.LEFT);
+        IEquippable rightHandItem = _itemByHand.get(Hand.RIGHT);
 
+        if (leftHandItem != null && rightHandItem != null) {
+            leftHandItem.deactivate();
+            rightHandItem.deactivate();
+        } else if (rightHandItem != null && rightHandItem.getNumHandsRequired() == 2) {
+            rightHandItem.deactivate();
+        }
+
+        // TODO: Gather closest item / resource
+
+        // TODO: When complete, reactivate deactivated items
     }
 
     public void build () {
-
+        // TODO: Do we have an item equipped that helps us build?
+        // If we do, let's use the item
+        // If not, put them away and use our hands!
     }
 
-    public void fire (float forcePercent) {
-        // Get sprite from current selected weapon
-        float weaponForce = .7f * forcePercent;
-
-        // TODO: Get point from weapon
-        Vector2 pos = body.getWorldCenter();
-        float totalRotation = body.getAngle();
-
-        Vector2 direction = new Vector2();
-        direction.x = MathUtils.cos(totalRotation);
-        direction.y = MathUtils.sin(totalRotation);
-        if (direction.len() > 0) {
-            direction.nor();
-        }
+    public void use (Hand hand,  float forcePercent) {
         //while ( totalRotation < -180 * MathUtils.degreesToRadians ) totalRotation += 360 * MathUtils.degreesToRadians;
         //while ( totalRotation >  180 * MathUtils.degreesToRadians ) totalRotation -= 360 * MathUtils.degreesToRadians;
-        //float xImpulse = MathUtils.sin(totalRotation);
-        //float yImpulse = MathUtils.cos(totalRotation);
-        float offset = 15;
-        float xPos = pos.x + (direction.x * offset / MessGame.PIXELS_PER_METER);
-        float yPos = pos.y + (direction.y * offset / MessGame.PIXELS_PER_METER);
 
-        ProjectileFactory.getInstance().createProjectile(_currentProjectileSprite, _map, xPos, yPos, direction.x, direction.y, forcePercent);
+        IEquippable item = _itemByHand.get(hand);
+        if (item != null) {
+            // TODO: Get point from weapon
+            Vector2 pos = body.getWorldCenter();
+            float totalRotation = body.getAngle();
+
+            Vector2 direction = new Vector2();
+            direction.x = MathUtils.cos(totalRotation);
+            direction.y = MathUtils.sin(totalRotation);
+            if (direction.len() > 0) {
+                direction.nor();
+            }
+            float offset = 15;
+            float xPos = pos.x + (direction.x * offset / MessGame.PIXELS_PER_METER);
+            float yPos = pos.y + (direction.y * offset / MessGame.PIXELS_PER_METER);
+
+            item.use(xPos, yPos, direction, forcePercent);
+        }
     }
 
     // TODO: Decrease fatigue

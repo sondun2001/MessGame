@@ -9,9 +9,11 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Array;
 import com.rebelo.messgame.MessGame;
-import com.rebelo.messgame.entities.Projectile;
+import com.rebelo.messgame.objects.projectiles.Projectile;
 import com.rebelo.messgame.map.MessMap;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
 /**
@@ -23,6 +25,7 @@ public class ProjectileFactory {
         return ourInstance;
     }
 
+    // TODO: Don't update dead projectiless
     private Array<Projectile> _projectiles = new Array<Projectile>();
 
     public ProjectileFactory() {
@@ -30,36 +33,10 @@ public class ProjectileFactory {
     }
 
     // TODO: Get sprite from map for this agent
-    public Projectile createProjectile(Sprite sprite, MessMap map, float posX, float posY, float impulseX, float impulseY, float forcePercent) {
-        // TODO: Get projectile from pool
-        // TODO: FInd better way of getting sprites
-        // TODO: Get sprite animation for this agent
-
-        // TODO: Create physics body
-        CircleShape circleShape = new CircleShape();
-        circleShape.setPosition(new Vector2());
-        int radiusInPixels = (int)((sprite.getRegionWidth() + sprite.getRegionHeight()) / 4f);
-        circleShape.setRadius(radiusInPixels / MessGame.PIXELS_PER_METER);
-
-        BodyDef characterBodyDef = new BodyDef();
-        //characterBodyDef.position.set((posX / MessGame.PIXELS_PER_METER), (posY / MessGame.PIXELS_PER_METER));
-        characterBodyDef.position.set(posX, posY);
-        characterBodyDef.type = BodyDef.BodyType.DynamicBody;
-        characterBodyDef.bullet = true;
-        Body characterBody = map.world.createBody(characterBodyDef);
-
-        FixtureDef charFixtureDef = new FixtureDef();
-        charFixtureDef.density = 0.2f;
-        charFixtureDef.shape = circleShape;
-        charFixtureDef.filter.groupIndex = 0;
-        characterBody.createFixture(charFixtureDef);
-        circleShape.dispose();
-
-        Projectile projectile = new Projectile(sprite, characterBody, map);
-        characterBody.setUserData(projectile);
-
+    public Projectile createProjectile(Class projectileClass, Sprite sprite, MessMap map, float posX, float posY, float impulseX, float impulseY, float forcePercent) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Constructor<?> cons = projectileClass.getConstructor(Sprite.class, MessMap.class);
+        Projectile projectile = (Projectile) cons.newInstance(sprite, map);
         _projectiles.add(projectile);
-
 
         projectile.fly(impulseX, impulseY, posX, posY, forcePercent);
         return projectile;

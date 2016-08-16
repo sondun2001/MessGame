@@ -140,7 +140,7 @@ public class GamepadAgentController implements IAgentController, ControllerListe
                 if (_agentController.getButton(XBox360Pad.BUTTON_RB)) {
                     _firePercent += delta;
                 } else if (_firePercent > 0) {
-                    _humanAgent.fire(MathUtils.clamp(_firePercent, .2f, 1f));
+                    _humanAgent.use(HumanAgent.Hand.RIGHT, MathUtils.clamp(_firePercent, .2f, 1f));
                     _firePercent = 0;
                 }
             }
