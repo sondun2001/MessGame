@@ -29,7 +29,6 @@ public class HumanAgentFactory {
     // TODO: Get sprite from map for this agent
     public HumanAgent createAgent(Sprite sprite, Agent agent, MessMap map, float posX, float posY) {
         // TODO: Get sprite animation for this agent
-
         // TODO: Create physics body
         CircleShape circleShape = new CircleShape();
         circleShape.setPosition(new Vector2());

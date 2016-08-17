@@ -1,4 +1,6 @@
 package com.rebelo.messgame.controllers;
+
+import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.entities.HumanAgent;
 
 /**
@@ -9,6 +11,11 @@ public class NetworkedAgentController implements IAgentController {
 
     public NetworkedAgentController(HumanAgent humanAgent) {
         _humanAgent = humanAgent;
+    }
+
+    @Override
+    public void setOwner(Box2dSteeringEntity agent) {
+
     }
 
     @Override

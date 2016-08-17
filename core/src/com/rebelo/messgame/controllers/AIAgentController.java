@@ -3,8 +3,11 @@ package com.rebelo.messgame.controllers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.btree.BehaviorTree;
 import com.badlogic.gdx.ai.btree.utils.BehaviorTreeParser;
+import com.badlogic.gdx.ai.steer.SteeringBehavior;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.StreamUtils;
+import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.entities.HumanAgent;
 
 import java.io.Reader;
@@ -36,6 +39,12 @@ public class AIAgentController implements IAgentController, Pool.Poolable {
         } finally {
             StreamUtils.closeQuietly(reader);
         }
+    }
+
+    @Override
+    public void setOwner(Box2dSteeringEntity agent) {
+        reset();
+        _humanBehaviourTree.start();
     }
 
     public void update(float delta) {
