@@ -22,6 +22,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.ObjectSet;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.controllers.AIAgentController;
 import com.rebelo.messgame.entities.*;
@@ -48,9 +49,9 @@ public class MessMap extends InputAdapter implements TileBasedMap
     public static final int LAYER_BUILDING = 1;
     public static final int LAYER_TALL = 2;
 
-    private static final int MAX_LOCAL_SLOTS = 4;
+    private static final int MAX_LOCAL_SLOTS = 1;
 
-    private static final float MIN_LIGHT = 0.02f;
+    private static final float MIN_LIGHT = 0.2f;
     private static final float MAX_LIGHT = 0.5f;
     private static final float LIGHT_DELTA = 0.1f;
 
@@ -267,8 +268,29 @@ public class MessMap extends InputAdapter implements TileBasedMap
         _atlas = null;
     }
 
+    double currentTime;
+    double accumulator;
+
     public void updateAndRender(Matrix4 cameraMatrix)
     {
+        /*
+        double newTime = TimeUtils.millis() / 1000.0;
+        double frameTime = Math.min(newTime - currentTime, 0.25);
+
+        accumulator += frameTime;
+        currentTime = newTime;
+
+        while (accumulator >= step)
+        {
+            updateObjects(step);
+            accumulator -= step;
+        }
+
+        double alpha = accumulator / step;
+
+        interpolateObjects((float)alpha);
+        */
+
         Iterator itr = _gameObjects.iterator();
         while(itr.hasNext())
         {

@@ -2,15 +2,10 @@ package com.rebelo.messgame.entities;
 
 import com.badlogic.gdx.ai.fsm.DefaultStateMachine;
 import com.badlogic.gdx.ai.fsm.StateMachine;
-import com.badlogic.gdx.ai.steer.SteeringAcceleration;
 import com.badlogic.gdx.ai.steer.SteeringBehavior;
-import com.badlogic.gdx.ai.steer.behaviors.Face;
-import com.badlogic.gdx.ai.steer.behaviors.LookWhereYouAreGoing;
 import com.badlogic.gdx.ai.steer.behaviors.Wander;
-import com.badlogic.gdx.ai.utils.Location;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
@@ -43,6 +38,11 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         RIGHT
     }
 
+    final static float MAX_ACCELERATION = 10f;
+    final static float MAX_TURBO_ACCELERATION = 30f;
+    final static float MAX_SPEED = 3f;
+    final static float MAX_TURBO_SPEED = 5f;
+
     ObjectMap<Hand, IEquippable> _itemByHand = new ObjectMap<Hand, IEquippable>();
 
     StateMachine<HumanAgent, HumanState> _stateMachine = new DefaultStateMachine<HumanAgent, HumanState>(this, HumanState.PHYSIOLIGICAL);
@@ -59,6 +59,7 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     private int _currentWeapon = 0;
 
     private Wander<Vector2> _wander;
+    private boolean _isTurboEnabled;
 
     public HumanAgent(Sprite sprite, Body body, boolean independentFacing, int radiusInPixels, MessMap map) {
         super(sprite, body, independentFacing, radiusInPixels / MessGame.PIXELS_PER_METER);
@@ -69,9 +70,9 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         _carriables.add(defaultCarriable);
         _itemByHand.put(Hand.RIGHT, defaultCarriable);
 
-        this.setMaxLinearAcceleration(10);
-        this.setMaxLinearSpeed(3);
-        this.setMaxAngularAcceleration(.5f); // greater than 0 because independent facing is enabled
+        this.setMaxLinearAcceleration(MAX_ACCELERATION);
+        this.setMaxLinearSpeed(MAX_SPEED);
+        this.setMaxAngularAcceleration(2f); // greater than 0 because independent facing is enabled
         this.setMaxAngularSpeed(5);
 
         _wander = new Wander<Vector2>(this) //
@@ -83,7 +84,6 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         .setWanderOrientation(3) //
         .setWanderRadius(1) //
         .setWanderRate(MathUtils.PI2 * 4);
-
     }
 
     public void setModel(Agent agent) {
@@ -110,8 +110,14 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
 
     @Override
     public void setSteeringBehavior(SteeringBehavior<Vector2> behavior) {
-        if (this.steeringBehavior != null && this.steeringBehavior != behavior) {
+        if (this.steeringBehavior != null) {
+            this.steeringBehavior.setOwner(null);
             this.steeringBehavior.setEnabled(false);
+        }
+
+        if (behavior != null) {
+            behavior.setEnabled(true);
+            behavior.setOwner(this);
         }
 
         super.setSteeringBehavior(behavior);
@@ -127,7 +133,23 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
             _controller.update(deltaTime);
         }
 
+        // TODO: Check closest resource (within focus / reach)
+
         super.update(deltaTime);
+    }
+
+    public void turboEnabled(boolean isTurbo) {
+        if (isTurbo && !_isTurboEnabled) {
+            // TODO: Apply impulse if stamina full
+            this.setMaxLinearSpeed(MAX_TURBO_SPEED);
+            this.setMaxLinearAcceleration(MAX_TURBO_ACCELERATION);
+        } else if (!isTurbo) {
+            // TODO: Gradually set this if we are higher
+            this.setMaxLinearSpeed(MAX_SPEED);
+            this.setMaxLinearAcceleration(MAX_ACCELERATION);
+        }
+
+        _isTurboEnabled = isTurbo;
     }
 
     public void previousWeapon () {

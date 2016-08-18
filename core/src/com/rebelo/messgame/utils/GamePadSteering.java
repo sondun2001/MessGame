@@ -18,7 +18,7 @@ public class GamePadSteering <T extends Vector<T>> extends SteeringBehavior<T> {
     }
 
     public void setVelocity(float xVelocity, float yVelocity) {
-        _targetPosition.set(xVelocity, yVelocity);
+        _targetPosition.set(xVelocity, yVelocity).scl(2f);
     }
 
     @Override
