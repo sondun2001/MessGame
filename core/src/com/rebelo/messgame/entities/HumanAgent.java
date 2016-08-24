@@ -4,6 +4,7 @@ import com.badlogic.gdx.ai.fsm.DefaultStateMachine;
 import com.badlogic.gdx.ai.fsm.StateMachine;
 import com.badlogic.gdx.ai.steer.SteeringBehavior;
 import com.badlogic.gdx.ai.steer.behaviors.Wander;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -72,8 +73,8 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
 
         this.setMaxLinearAcceleration(MAX_ACCELERATION);
         this.setMaxLinearSpeed(MAX_SPEED);
-        this.setMaxAngularAcceleration(2f); // greater than 0 because independent facing is enabled
-        this.setMaxAngularSpeed(5);
+        this.setMaxAngularAcceleration(5f); // greater than 0 because independent facing is enabled
+        this.setMaxAngularSpeed(8f);
 
         _wander = new Wander<Vector2>(this) //
         .setFaceEnabled(true) // We want to use Face internally (independent facing is on)
@@ -102,6 +103,26 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
 
         _controller = controller;
         _controller.setOwner(this);
+    }
+
+    private Vector2 _targetLocation;
+    public void showTarget(Vector2 position) {
+        _targetLocation = position;
+    }
+
+    @Override
+    public void draw(Batch batch) {
+        super.draw(batch);
+
+        if (_targetLocation != null && !_targetLocation.isZero()) {
+            float w = sprite.getRegionWidth();
+            float h = sprite.getRegionHeight();
+            float ox = w / 2f;
+            float oy = h / 2f;
+            sprite.setPosition(_targetLocation.x * MessGame.PIXELS_PER_METER - ox, _targetLocation.y * MessGame.PIXELS_PER_METER - oy);
+            sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+            sprite.draw(batch);
+        }
     }
 
     private void resetSteeringBehvaiour() {
@@ -136,6 +157,8 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         // TODO: Check closest resource (within focus / reach)
 
         super.update(deltaTime);
+
+
     }
 
     public void turboEnabled(boolean isTurbo) {

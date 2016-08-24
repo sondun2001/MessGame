@@ -165,59 +165,67 @@ public class Box2dSteeringEntity implements Steerable<Vector2> {
 		}
 
         // TODO: Should be map width / height
-        wrapAround(Gdx.graphics.getWidth() / MessGame.PIXELS_PER_METER,
-                Gdx.graphics.getHeight() / MessGame.PIXELS_PER_METER);
+        wrapAround(Gdx.graphics.getWidth() / MessGame.PIXELS_PER_METER, Gdx.graphics.getHeight() / MessGame.PIXELS_PER_METER);
 	}
 
 	protected void applySteering (SteeringAcceleration<Vector2> steering, float deltaTime) {
-		boolean anyAccelerations = false;
+        boolean angularAcceleration = false;
+        boolean linearAcceleration = false;
 
 		// Update position and linear velocity.
 		if (!steeringOutput.linear.isZero()) {
 			// this method internally scales the force by deltaTime
 			body.applyForceToCenter(steeringOutput.linear, true);
-			anyAccelerations = true;
+            linearAcceleration = true;
 		}
 
+        Vector2 linVel = getLinearVelocity();
 		// Update orientation and angular velocity
 		if (isIndependentFacing()) {
 			if (steeringOutput.angular != 0) {
 				// this method internally scales the torque by deltaTime
 				body.applyTorque(steeringOutput.angular, true);
-				anyAccelerations = true;
+                angularAcceleration = true;
 			}
 		} else {
 			// If we haven't got any velocity, then we can do nothing.
-			Vector2 linVel = getLinearVelocity();
 			if (!linVel.isZero(getZeroLinearSpeedThreshold())) {
 				float newOrientation = vectorToAngle(linVel);
 				body.setAngularVelocity((newOrientation - getAngularVelocity()) * deltaTime); // this is superfluous if independentFacing is always true
 				body.setTransform(body.getPosition(), newOrientation);
+                angularAcceleration = true;
 			}
 		}
 
-		if (anyAccelerations) {
-			// body.activate();
+        if (linearAcceleration) {
+            // Cap the linear speed
+            float currentSpeedSquare = linVel.len2();
+            float maxLinearSpeed = getMaxLinearSpeed();
+            if (currentSpeedSquare > maxLinearSpeed * maxLinearSpeed) {
+                body.setLinearVelocity(linVel.scl(maxLinearSpeed / (float)Math.sqrt(currentSpeedSquare)));
+            }
+        } else {
+            linVel.scl(0.9f);
+            if (linVel.len() < 0.1f) {
+                linVel.set(0f, 0f);
+            }
+            body.setLinearVelocity(linVel);
+        }
 
-			// TODO:
-			// Looks like truncating speeds here after applying forces doesn't work as expected.
-			// We should likely cap speeds form inside an InternalTickCallback, see
-			// http://www.bulletphysics.org/mediawiki-1.5.8/index.php/Simulation_Tick_Callbacks
-
-			// Cap the linear speed
-			Vector2 velocity = body.getLinearVelocity();
-			float currentSpeedSquare = velocity.len2();
-			float maxLinearSpeed = getMaxLinearSpeed();
-			if (currentSpeedSquare > maxLinearSpeed * maxLinearSpeed) {
-				body.setLinearVelocity(velocity.scl(maxLinearSpeed / (float)Math.sqrt(currentSpeedSquare)));
-			}
-
-			// Cap the angular speed
-			float maxAngVelocity = getMaxAngularSpeed();
-			if (body.getAngularVelocity() > maxAngVelocity) {
-				body.setAngularVelocity(maxAngVelocity);
-			}
-		}
+        float angularVelocity = body.getAngularVelocity();
+        if (angularAcceleration) {
+            // Cap the angular speed
+            float maxAngVelocity = getMaxAngularSpeed();
+            if (angularVelocity > maxAngVelocity) {
+                body.setAngularVelocity(maxAngVelocity);
+            }
+        } else if (!linearAcceleration) {
+            angularVelocity *= 0.9f;
+            if (angularVelocity < 0.1f) {
+                angularVelocity = 0f;
+            }
+            body.setAngularVelocity(angularVelocity);
+        }
 	}
 
     // the display area is considered to wrap around from top to bottom
@@ -237,6 +245,7 @@ public class Box2dSteeringEntity implements Steerable<Vector2> {
         if (k != Float.POSITIVE_INFINITY) body.setTransform(pos, body.getAngle());
     }
 
+    // TODO: Don't look directly at body position, use another vec2 that has interopolated values
 	public void draw (Batch batch) {
 		Vector2 pos = body.getPosition();
 		float w = sprite.getRegionWidth();

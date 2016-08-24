@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
+import com.rebelo.messgame.ai.steering.Box2dSteeringUtils;
 import com.rebelo.messgame.entities.HumanAgent;
 import com.rebelo.messgame.utils.FacePoint;
 import com.rebelo.messgame.utils.GamePadSteering;
@@ -84,12 +85,13 @@ public class GamepadAgentController implements IAgentController, ControllerListe
     HumanAgent _humanAgent;
     Controller _agentController = null;
     Vector2 _rotationTarget = new Vector2(0f, 0f);
+    Vector2 _gamepadRotation = new Vector2(0f, 0f);
 
     GamePad _gamePad = GamePad.NONE;
 
     float _firePercent;
 
-    final static float ROTATE_EPSILON = 0.06f;
+    final static float ROTATE_EPSILON = 0.075f;
     final static float INPUT_FORCE = 1f;
 
     public GamepadAgentController(HumanAgent humanAgent) {
@@ -97,14 +99,15 @@ public class GamepadAgentController implements IAgentController, ControllerListe
 
         _gamePadSteering = new GamePadSteering<Vector2>(_humanAgent);
 
+        /*
         _lookWhereYouAreGoing = new LookWhereYouAreGoing<Vector2>(_humanAgent)
-        .setAlignTolerance(0.001f) // Used by Face
-        .setDecelerationRadius(1) // Used by Face
+        .setAlignTolerance(0.0001f) // Used by Face
+        .setDecelerationRadius(1f) // Used by Face
         .setTimeToTarget(0.1f); // Used by Face
 
         _facePoint = new FacePoint<Vector2>(_humanAgent)
-        .setAlignTolerance(0.001f) // Used by Face
-        .setDecelerationRadius(1) // Used by Face
+        .setAlignTolerance(0.00001f) // Used by Face
+        .setDecelerationRadius(1f) // Used by Face
         .setTimeToTarget(0.1f); // Used by Face
 
         _facePoint.setTargetVector(_rotationTarget);
@@ -113,6 +116,7 @@ public class GamepadAgentController implements IAgentController, ControllerListe
         _blendedSteering.add(_gamePadSteering, 1f);
         _blendedSteering.add(_lookWhereYouAreGoing, 1f);
         _blendedSteering.add(_facePoint, 1f);
+        */
     }
 
     // Assign controller to agent
@@ -143,7 +147,7 @@ public class GamepadAgentController implements IAgentController, ControllerListe
 
     @Override
     public void setOwner(Box2dSteeringEntity agent) {
-        agent.setSteeringBehavior(_blendedSteering);
+        agent.setSteeringBehavior(_gamePadSteering);
     }
 
     @Override
@@ -175,14 +179,30 @@ public class GamepadAgentController implements IAgentController, ControllerListe
             float yVelocity = processAxis(axisYValue * -1, turboButton);
 
             _gamePadSteering.setVelocity(xVelocity, yVelocity);
+            _gamepadRotation.set(rotateXValue, rotateYValue * -1);
 
-            if (Math.abs(rotateXValue) > ROTATE_EPSILON || Math.abs(rotateYValue) > ROTATE_EPSILON) {
-                _rotationTarget.set(_humanAgent.getPosition().x + rotateXValue, _humanAgent.getPosition().y + (rotateYValue * -1));
-                _facePoint.setEnabled(true);
+            Vector2 pos = _humanAgent.getPosition();
+            if (Math.abs(_gamepadRotation.len()) > ROTATE_EPSILON) {
+                //_gamepadRotation.scl(2f);
+                _rotationTarget.set(pos.x + _gamepadRotation.x, pos.y + _gamepadRotation.y);
+                _humanAgent.showTarget(_rotationTarget);
+                _humanAgent.getBody().setTransform(pos.x, pos.y, Box2dSteeringUtils.vectorToAngle(_gamepadRotation));
+                /*
+                _blendedSteering.get(1).setWeight(0f);
+                _blendedSteering.get(2).setWeight(1f);
                 _lookWhereYouAreGoing.setEnabled(false);
+                _facePoint.setEnabled(true);
+                */
             } else {
-                _facePoint.setEnabled(false);
+                _humanAgent.showTarget(Vector2.Zero);
+                Vector2 vel = _humanAgent.getLinearVelocity();
+                _humanAgent.getBody().setTransform(pos.x, pos.y, Box2dSteeringUtils.vectorToAngle(vel));
+                /*
+                _blendedSteering.get(1).setWeight(1f);
+                _blendedSteering.get(2).setWeight(0f);
                 _lookWhereYouAreGoing.setEnabled(true);
+                _facePoint.setEnabled(false);
+                */
             }
         }
     }

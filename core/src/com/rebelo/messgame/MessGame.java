@@ -24,32 +24,26 @@ public class MessGame implements ApplicationListener
      * Common practice is to use a constant to convert pixels to and from
      * "meters".
      */
-    public static final float PIXELS_PER_METER = 60.0f;
+    public static final float PIXELS_PER_METER = 64.0f;
     public static final int REF_WIDTH = 1024;
     public static final int REF_HEIGHT = 768;
     public static float scaleFactor = 1f;
 
-    public static final float TIMESTEP = 1.0f / 60.0f;
-    public static final int VELOCITYITERATIONS = 8;
-    public static final int POSITIONITERATIONS = 3;
 
     public static float WINDOW_WIDTH;
     public static float WINDOW_HEIGHT;
     public static float DENSITY;
 
     private MessMap _messMap;
-
     private World _world;
-
     private BitmapFont _font;
-    private Batch _tileMapSpriteBatch;
     private SpriteBatch _batch;
-    private OrthogonalTiledMapRenderer _renderer;
     private OrthographicCamera _camera;
 
     private Box2DDebugRenderer _box2dRenderer;
-	
-	@Override
+
+
+    @Override
 	public void create() {
         WINDOW_WIDTH = Gdx.graphics.getWidth();
         WINDOW_HEIGHT = Gdx.graphics.getHeight();
@@ -80,9 +74,6 @@ public class MessGame implements ApplicationListener
         // TODO: Create async loading operations of the following
         _messMap = new MessMap(_camera, _world);
 
-        _renderer = new OrthogonalTiledMapRenderer(_messMap.getMap());
-        _tileMapSpriteBatch = _renderer.getBatch();
-
         //_box2dRenderer = new Box2DDebugRenderer();
 
         _font = new BitmapFont();
@@ -101,17 +92,17 @@ public class MessGame implements ApplicationListener
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        // TODO: Use extended viewport.
+        // Update viewport
         _camera.update();
 
-        _renderer.setView(_camera);
-        _renderer.render();
+        _messMap.renderMap();
 
-        _tileMapSpriteBatch.begin();
-        _messMap.updateSprites(_tileMapSpriteBatch);
-        _tileMapSpriteBatch.end();
-
+        // Update entities
         Matrix4 cameraMatrix = _camera.combined.scale(PIXELS_PER_METER, PIXELS_PER_METER, PIXELS_PER_METER);
         _messMap.updateAndRender(cameraMatrix);
+
+        // TODO: Update particles
 
         // Render UI
         //_box2dRenderer.render(_world, cameraMatrix);
@@ -120,8 +111,6 @@ public class MessGame implements ApplicationListener
         _batch.begin();
         _font.draw(_batch, "FPS: " + Gdx.graphics.getFramesPerSecond(), 20 * DENSITY, 30 * DENSITY);
         _batch.end();
-
-        _world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
     }
 
 	@Override

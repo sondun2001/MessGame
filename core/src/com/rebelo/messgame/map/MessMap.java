@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
@@ -55,12 +56,18 @@ public class MessMap extends InputAdapter implements TileBasedMap
     private static final float MAX_LIGHT = 0.5f;
     private static final float LIGHT_DELTA = 0.1f;
 
+    private static final float PHYSICS_STEP = 1/60f;
+    public static final int VELOCITYITERATIONS = 6;
+    public static final int POSITIONITERATIONS = 3;
+
     // TODO: Make this configurable from the server
     private static final float DAY_NIGHT_LENGTH = 50f;
 
     private TiledMap _map;
     private OrthographicCamera _camera;
+    private OrthogonalTiledMapRenderer _renderer;
     private OrthoCamController _cameraController;
+    private Batch _tileMapSpriteBatch;
     private Vector3 _worldCoordinates;
     private InputMultiplexer _multiplexer;
     private AStarPathFinder _aStarPathFinder;
@@ -119,6 +126,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
 
     public MessMap(OrthographicCamera camera, World world)
     {
+
         this.world = world;
         world.setContactListener(new ContactListener() {
 
@@ -239,6 +247,9 @@ public class MessMap extends InputAdapter implements TileBasedMap
 
         // Our pathfinder!
         _aStarPathFinder = new AStarPathFinder(this, 32, false);
+
+        _renderer = new OrthogonalTiledMapRenderer(_map);
+        _tileMapSpriteBatch = _renderer.getBatch();
     }
 
     public void dispose()
@@ -271,26 +282,55 @@ public class MessMap extends InputAdapter implements TileBasedMap
     double currentTime;
     double accumulator;
 
+    void updatePhysics(float step) {
+
+    }
+
+    void interpolateObjects(float alpha) {
+
+    }
+
+    void drawObjects() {
+        // TODO: Check if they are in frustrum
+
+        _tileMapSpriteBatch.begin();
+
+        // Iterate over all the players
+        Iterator itr = _agents.iterator();
+        while(itr.hasNext())
+        {
+            HumanAgent agent = (HumanAgent) itr.next();
+            agent.draw(_tileMapSpriteBatch);
+        }
+
+        ProjectileFactory.getInstance().draw(_tileMapSpriteBatch);
+
+        _tileMapSpriteBatch.end();
+    }
+
+    public void renderMap() {
+        // Render date Map
+        _renderer.setView(_camera);
+        _renderer.render();
+    }
+
     public void updateAndRender(Matrix4 cameraMatrix)
     {
-        /*
         double newTime = TimeUtils.millis() / 1000.0;
         double frameTime = Math.min(newTime - currentTime, 0.25);
 
         accumulator += frameTime;
         currentTime = newTime;
 
-        while (accumulator >= step)
+        while (accumulator >= PHYSICS_STEP)
         {
-            updateObjects(step);
-            accumulator -= step;
+            updatePhysics(PHYSICS_STEP);
+            this.world.step(PHYSICS_STEP, VELOCITYITERATIONS, POSITIONITERATIONS);
+
+            accumulator -= PHYSICS_STEP;
         }
 
-        double alpha = accumulator / step;
-
-        interpolateObjects((float)alpha);
-        */
-
+        // Check which objects are in frustrum
         Iterator itr = _gameObjects.iterator();
         while(itr.hasNext())
         {
@@ -318,8 +358,12 @@ public class MessMap extends InputAdapter implements TileBasedMap
             }
         }
 
-        //_aiAgent.update(Gdx.graphics.getDeltaTime());
-        //_controlledAgent.update(Gdx.graphics.getDeltaTime());
+        double alpha = accumulator / PHYSICS_STEP;
+
+        interpolateObjects((float)alpha);
+
+        // Render objects
+        drawObjects();
 
         Iterator agnetItr = _agents.iterator();
         while(agnetItr.hasNext())
@@ -363,25 +407,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
             _gettingDark = false;
             _currentElapsedTOD = 0;
         }
-    }
-
-    public void updateSprites(Batch batch)
-    {
-        // TODO: Check if they are in frustrum
-
-        // Iterate over all the players
-        Iterator itr = _agents.iterator();
-        while(itr.hasNext())
-        {
-            HumanAgent agent = (HumanAgent) itr.next();
-            agent.draw(batch);
-        }
-
-        //_player.draw(batch);
-        //_aiAgent.draw(batch);
-        //_controlledAgent.draw(batch);
-
-        ProjectileFactory.getInstance().draw(batch);
     }
 
     @Override
