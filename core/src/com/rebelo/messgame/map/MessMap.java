@@ -44,7 +44,7 @@ import java.util.Iterator;
  */
 // TODO: Pass in data from the server to generate original map
 // TODO: State machine to handle different modes
-public class MessMap extends InputAdapter implements TileBasedMap
+public class MessMap extends InputAdapter implements TileBasedMap, ITileMap
 {
     public static final int LAYER_GROUND = 0;
     public static final int LAYER_BUILDING = 1;
@@ -117,8 +117,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
 
     public int width;
     public int height;
-    public int tileWidth;
-    public int tileHeight;
+    public int tileSize;
     public MapLayers layers;
     public RayHandler rayHandler;
 
@@ -197,8 +196,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
         // Default map properties
         width = 512;
         height = 512;
-        tileWidth = 32;
-        tileHeight = 32;
+        tileSize = 32;
+        tileSize = 32;
 
         // Camera Setup
         _camera = camera;
@@ -211,7 +210,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
         Gdx.input.setInputProcessor(_multiplexer);
 
         // Ground
-        _groundLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight);
+        _groundLayer = new TiledMapTileLayer(width, height, tileSize, tileSize);
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -227,11 +226,11 @@ public class MessMap extends InputAdapter implements TileBasedMap
         layers.add(_groundLayer);
 
         // Buildings
-        _buildingLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight);
+        _buildingLayer = new TiledMapTileLayer(width, height, tileSize, tileSize);
         layers.add(_buildingLayer);
 
         // Objects that will display over buildings
-        _objectLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight);
+        _objectLayer = new TiledMapTileLayer(width, height, tileSize, tileSize);
         layers.add(_objectLayer);
 
         // For input
@@ -414,8 +413,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
     {
         _camera.unproject(_worldCoordinates.set(screenX, screenY, 0));
 
-        int tileX = (int)_worldCoordinates.x / tileWidth;
-        int tileY = (int)_worldCoordinates.y / tileHeight;
+        int tileX = (int)_worldCoordinates.x / tileSize;
+        int tileY = (int)_worldCoordinates.y / tileSize;
 
         TiledMapTileLayer.Cell cell = _buildingLayer.getCell(tileX, tileY);
 
@@ -448,7 +447,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
             }
             else if (_mode == 3)
             {
-                //Path path = _aStarPathFinder.findPath(_player, (int) _player.getX() / tileWidth, (int) _player.getY() / tileHeight, tileX, tileY);
+                //Path path = _aStarPathFinder.findPath(_player, (int) _player.getX() / tileSize, (int) _player.getY() / tileSize, tileX, tileY);
                 //_player.setPath(path);
                 return true;
             }
@@ -484,8 +483,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
     {
         return _map;
     }
-    public int getPixelWidth() { return width * tileWidth; }
-    public int getPixelHeight() { return height * tileHeight; }
+    public int getPixelWidth() { return width * tileSize; }
+    public int getPixelHeight() { return height * tileSize; }
 
     private boolean _createBuildingComponent(Sprite sprite, int x, int y)
     {
@@ -525,7 +524,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
         light.init(cell, spriteOn, spriteOff, GameLight.TYPE_LIGHT_POINT, rayHandler);
         light.setDistance((32 * 8) / MessGame.PIXELS_PER_METER);
         light.setColor(new Color(.8f, .8f, .8f, 0.5f));
-        light.setPosition(((x * tileWidth) + (tileWidth / 2)) / MessGame.PIXELS_PER_METER, ((y * tileHeight) + (tileHeight / 2)) / MessGame.PIXELS_PER_METER);
+        light.setPosition(((x * tileSize) + (tileSize / 2)) / MessGame.PIXELS_PER_METER, ((y * tileSize) + (tileSize / 2)) / MessGame.PIXELS_PER_METER);
 
         _buildingLayer.setCell(x, y, cell);
         _gameObjectByCell.put(cell, light);
@@ -600,5 +599,15 @@ public class MessMap extends InputAdapter implements TileBasedMap
     @Override
     public float getCost(PathFindingContext context, int tx, int ty) {
         return 1;
+    }
+
+    @Override
+    public MapTile getTile(float x, float y) {
+        return null;
+    }
+
+    @Override
+    public float getTileSize() {
+        return tileSize;
     }
 }
