@@ -11,18 +11,22 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class GamePadSteering <T extends Vector<T>> extends SteeringBehavior<T> {
 
+    public Vector2 getTargetPosition() {
+        return _targetPosition;
+    }
+
     Vector2 _targetPosition = new Vector2(0f, 0f);
     float _angularVelocity = 0f;
+    float _epsilon = 0f;
 
-    public GamePadSteering(Steerable<T> owner) {
+    public GamePadSteering(Steerable<T> owner, float epsilon) {
         super(owner);
+        _epsilon = epsilon;
     }
 
     public void setVelocity(float xVelocity, float yVelocity) {
         _targetPosition.set(xVelocity, yVelocity);
-        if (_targetPosition.len() > 0.2) {
-            _targetPosition.scl(2f);
-        } else {
+        if (_targetPosition.isZero(_epsilon)) {
             _targetPosition.set(0f, 0f);
         }
     }

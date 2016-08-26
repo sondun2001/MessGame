@@ -1,8 +1,6 @@
 package com.rebelo.messgame.controllers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ai.steer.behaviors.BlendedSteering;
-import com.badlogic.gdx.ai.steer.behaviors.LookWhereYouAreGoing;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.ControllerListener;
 import com.badlogic.gdx.controllers.PovDirection;
@@ -12,7 +10,6 @@ import com.badlogic.gdx.math.Vector3;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.ai.steering.Box2dSteeringUtils;
 import com.rebelo.messgame.entities.HumanAgent;
-import com.rebelo.messgame.utils.FacePoint;
 import com.rebelo.messgame.utils.GamePadSteering;
 
 /**
@@ -21,6 +18,7 @@ import com.rebelo.messgame.utils.GamePadSteering;
  * TODO: Support multiple agents and controllers
  */
 public class GamepadAgentController implements IAgentController, ControllerListener {
+
 
     enum GamePad {
         NONE,
@@ -77,10 +75,7 @@ public class GamepadAgentController implements IAgentController, ControllerListe
         return false;
     }
 
-    private BlendedSteering<Vector2> _blendedSteering;
     private GamePadSteering<Vector2> _gamePadSteering;
-    private LookWhereYouAreGoing<Vector2> _lookWhereYouAreGoing;
-    private FacePoint<Vector2> _facePoint;
 
     HumanAgent _humanAgent;
     Controller _agentController = null;
@@ -91,32 +86,15 @@ public class GamepadAgentController implements IAgentController, ControllerListe
 
     float _firePercent;
 
-    final static float ROTATE_EPSILON = 0.075f;
+    private static final float ROTATE_EPSILON = 0.1f;
+    private static final float STEERING_EPSILON = 0.1f;
+    private static final float STEERING_ROTATION_EPSILON = 0.3f;
+
     final static float INPUT_FORCE = 1f;
 
     public GamepadAgentController(HumanAgent humanAgent) {
         _humanAgent = humanAgent;
-
-        _gamePadSteering = new GamePadSteering<Vector2>(_humanAgent);
-
-        /*
-        _lookWhereYouAreGoing = new LookWhereYouAreGoing<Vector2>(_humanAgent)
-        .setAlignTolerance(0.0001f) // Used by Face
-        .setDecelerationRadius(1f) // Used by Face
-        .setTimeToTarget(0.1f); // Used by Face
-
-        _facePoint = new FacePoint<Vector2>(_humanAgent)
-        .setAlignTolerance(0.00001f) // Used by Face
-        .setDecelerationRadius(1f) // Used by Face
-        .setTimeToTarget(0.1f); // Used by Face
-
-        _facePoint.setTargetVector(_rotationTarget);
-
-        _blendedSteering = new BlendedSteering<Vector2>(_humanAgent);
-        _blendedSteering.add(_gamePadSteering, 1f);
-        _blendedSteering.add(_lookWhereYouAreGoing, 1f);
-        _blendedSteering.add(_facePoint, 1f);
-        */
+        _gamePadSteering = new GamePadSteering<Vector2>(_humanAgent, STEERING_EPSILON);
     }
 
     // Assign controller to agent
@@ -140,8 +118,6 @@ public class GamepadAgentController implements IAgentController, ControllerListe
         if (_agentController != null) {
             _agentController.removeListener(this);
         }
-
-        //_rotationLocation.setPosition(0f, 0f);
         _gamePad = GamePad.NONE;
     }
 
@@ -182,28 +158,19 @@ public class GamepadAgentController implements IAgentController, ControllerListe
             _gamepadRotation.set(rotateXValue, rotateYValue * -1);
 
             Vector2 pos = _humanAgent.getPosition();
-            if (Math.abs(_gamepadRotation.len()) > ROTATE_EPSILON) {
-                //_gamepadRotation.scl(2f);
+            Vector2 steeringPos = _gamePadSteering.getTargetPosition();
+
+            if (!_gamepadRotation.isZero(ROTATE_EPSILON)) {
                 _rotationTarget.set(pos.x + _gamepadRotation.x, pos.y + _gamepadRotation.y);
-                _humanAgent.showTarget(_rotationTarget);
                 _humanAgent.getBody().setTransform(pos.x, pos.y, Box2dSteeringUtils.vectorToAngle(_gamepadRotation));
-                /*
-                _blendedSteering.get(1).setWeight(0f);
-                _blendedSteering.get(2).setWeight(1f);
-                _lookWhereYouAreGoing.setEnabled(false);
-                _facePoint.setEnabled(true);
-                */
+            } else if (!steeringPos.isZero(STEERING_ROTATION_EPSILON)){
+                _rotationTarget.set(pos.x + steeringPos.x, pos.y + steeringPos.y);
+                _humanAgent.getBody().setTransform(pos.x, pos.y, Box2dSteeringUtils.vectorToAngle(steeringPos));
             } else {
-                _humanAgent.showTarget(Vector2.Zero);
-                Vector2 vel = _humanAgent.getLinearVelocity();
-                _humanAgent.getBody().setTransform(pos.x, pos.y, Box2dSteeringUtils.vectorToAngle(vel));
-                /*
-                _blendedSteering.get(1).setWeight(1f);
-                _blendedSteering.get(2).setWeight(0f);
-                _lookWhereYouAreGoing.setEnabled(true);
-                _facePoint.setEnabled(false);
-                */
+                _rotationTarget.setZero();
             }
+
+            _humanAgent.showTarget(_rotationTarget);
         }
     }
 
@@ -224,13 +191,6 @@ public class GamepadAgentController implements IAgentController, ControllerListe
                 _humanAgent.turboEnabled(false);
             }
         }
-        /*
-        if (velocity > MAX_VELOCITY) {
-            velocity = MAX_VELOCITY;
-        } else if (velocity < -MAX_VELOCITY) {
-            velocity = -MAX_VELOCITY;
-        }
-        */
         return velocity;
     }
 }
