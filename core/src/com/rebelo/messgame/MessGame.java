@@ -1,9 +1,6 @@
 package com.rebelo.messgame;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -16,7 +13,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.rebelo.messgame.map.MessMap;
 
-public class MessGame implements ApplicationListener
+public class MessGame extends Game
 {
     /**
      * Box2d works best with small values. If you use pixels directly you will
@@ -41,7 +38,6 @@ public class MessGame implements ApplicationListener
     private OrthographicCamera _camera;
 
     private Box2DDebugRenderer _box2dRenderer;
-
 
     @Override
 	public void create() {

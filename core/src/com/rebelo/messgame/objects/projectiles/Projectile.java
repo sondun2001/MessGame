@@ -22,6 +22,8 @@ public class Projectile implements Pool.Poolable {
     MessMap _map;
 
     protected Vector2 _startingPosition = new Vector2();
+    protected float _projectileDrag = 0.9f;
+
     protected boolean _alive = false;
 
     public Projectile(Sprite sprite, MessMap map) {
@@ -61,9 +63,19 @@ public class Projectile implements Pool.Poolable {
         _body.applyLinearImpulse(impulseX * forcePercent, impulseY * forcePercent, posX, posY, true);
     }
 
+    /**
+     * Fixed step update, delta not needed
+     * @param delta
+     */
     public void update(float delta) {
-        // TODO: DO Something?
-        //_body.setLinearDamping(0.1f * delta);
+        Vector2 linVel = _body.getLinearVelocity();
+        linVel.scl(_projectileDrag);
+
+        if (linVel.isZero(5f)) {
+            die();
+        } else {
+            _body.setLinearVelocity(linVel);
+        }
     }
 
     public void draw (Batch batch) {
@@ -84,6 +96,13 @@ public class Projectile implements Pool.Poolable {
         _sprite.setPosition(pos.x * MessGame.PIXELS_PER_METER - ox, pos.y * MessGame.PIXELS_PER_METER - oy);
         _sprite.setRotation(_body.getAngle() * MathUtils.radiansToDegrees);
         _sprite.draw(batch);
+    }
+
+    void die() {
+        _alive = false;
+        _body.setLinearVelocity(0f, 0f);
+        _body.setAwake(false);
+        _body.setActive(false);
     }
 
     @Override

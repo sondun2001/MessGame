@@ -8,9 +8,6 @@ import com.rebelo.messgame.map.MessMap;
  */
 public class SnowBall extends Projectile {
 
-    final static float MAX_DISTANCE_POTENTIAL = 10f;
-    float _maxDistance = 10f;
-
     public SnowBall(Sprite sprite, MessMap map) {
         super(sprite, map);
     }
@@ -18,26 +15,13 @@ public class SnowBall extends Projectile {
     @Override
     public void fly(float impulseX, float impulseY, float posX, float posY, float forcePercent) {
         super.fly(impulseX, impulseY, posX, posY, forcePercent);
-        _maxDistance = MAX_DISTANCE_POTENTIAL * forcePercent;
+        _projectileDrag = 0.95f;
     }
 
     @Override
     public void update(float delta) {
         super.update(delta);
 
-        if (_alive) {
-            float distance = _startingPosition.dst(_body.getPosition());
-            /*
-            if (distance > 9) {
-                _body.getFixtureList().get(0).setSensor(false);
-            }
-            */
-            if (distance >= _maxDistance) {
-                _alive = false;
-                _body.setLinearVelocity(0f, 0f);
-                _body.setAwake(false);
-                _body.setActive(false);
-            }
-        }
+
     }
 }

@@ -282,14 +282,25 @@ public class MessMap extends InputAdapter implements TileBasedMap
     double currentTime;
     double accumulator;
 
+    /**
+     * Update physical body data
+     * @param step
+     */
     void updatePhysics(float step) {
-
+        ProjectileFactory.getInstance().update(step);
     }
 
+    /**
+     * Will interpolate position / rotation data used to draw sprites
+     * @param alpha
+     */
     void interpolateObjects(float alpha) {
 
     }
 
+    /**
+     * Draw sprites to buffer
+     */
     void drawObjects() {
         // TODO: Check if they are in frustrum
 
@@ -371,8 +382,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
             HumanAgent agent = (HumanAgent) agnetItr.next();
             agent.update(Gdx.graphics.getDeltaTime());
         }
-
-        ProjectileFactory.getInstance().update(Gdx.graphics.getDeltaTime());
 
         // Keep track of day and time
         processDayAndTime();

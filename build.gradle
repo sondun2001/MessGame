@@ -1,3 +1,5 @@
+apply plugin: 'com.github.ben-manes.versions'
+
 buildscript {
     repositories {
         mavenLocal()
@@ -8,6 +10,7 @@ buildscript {
     dependencies {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
         classpath 'com.android.tools.build:gradle:2.0.0'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
     }
 }
 
@@ -18,11 +21,11 @@ allprojects {
     version = '1.0'
     ext {
         appName = "MessGame"
-        gdxVersion = '1.9.3'
-        roboVMVersion = '2.1.0'
-        box2DLightsVersion = '1.4'
+        gdxVersion = '1.9.6'
+        roboVMVersion = '2.2.0-SNAPSHOT'
+        box2DLightsVersion = '1.5-SNAPSHOT'
         ashleyVersion = '1.7.0'
-        aiVersion = '1.8.0'
+        aiVersion = '1.8.1'
     }
 
     repositories {
