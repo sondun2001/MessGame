@@ -26,6 +26,7 @@ import com.badlogic.gdx.utils.ObjectSet;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.controllers.AIAgentController;
+import com.rebelo.messgame.controllers.GamepadAgentController;
 import com.rebelo.messgame.entities.*;
 import com.rebelo.messgame.models.Agent;
 import com.rebelo.messgame.services.BuildingFactory;
@@ -43,14 +44,15 @@ import java.util.Iterator;
  * Created by sondun2001 on 12/15/13.
  */
 // TODO: Pass in data from the server to generate original map
-// TODO: State machine to handle different modes
 public class MessMap extends InputAdapter implements TileBasedMap
 {
+    // TODO: New Interface for handling game rules / mode, have it processed here
+
     public static final int LAYER_GROUND = 0;
     public static final int LAYER_BUILDING = 1;
     public static final int LAYER_TALL = 2;
 
-    private static final int MAX_LOCAL_SLOTS = 1;
+    private static final int MAX_LOCAL_SLOTS = 2;
 
     private static final float MIN_LIGHT = 0.2f;
     private static final float MAX_LIGHT = 0.5f;
@@ -101,10 +103,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
     private ObjectSet<GameObject> _activeCells = new ObjectSet<GameObject>();
     private Array<GameObject> _gameObjects = new Array<GameObject>();
 
-    //private AISprite _player;
-    //private HumanAgent _aiAgent;
-    //private HumanAgent _controlledAgent;
-
     private ControllerManager _controllerManager;
 
     public Array<HumanAgent> getAgents() {
@@ -137,6 +135,8 @@ public class MessMap extends InputAdapter implements TileBasedMap
 
                 if (!fixtureA.isSensor() && !fixtureB.isSensor()) {
                     Gdx.app.log("beginContact", "between " + fixtureA.toString() + " and " + fixtureB.toString());
+
+                    // Create contact handler.
                 }
             }
 
@@ -175,19 +175,21 @@ public class MessMap extends InputAdapter implements TileBasedMap
         //_player.setPosition(0, 0);
 
         // TODO: How will we manage agent creation?
+        /*
         for (int i = 0; i < MAX_LOCAL_SLOTS; i++) {
             HumanAgent agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 30, 30);
             agent.setController(new AIAgentController(agent));
             _agents.add(agent);
         }
-
-        /*
-        _aiAgent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 30, 30);
-        _aiAgent.setController(new AIAgentController(_aiAgent));
-
-        _controlledAgent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 60, 60);
-        _controlledAgent.setController(new GamepadAgentController(_controlledAgent));
         */
+
+        HumanAgent agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 30, 30);
+        agent.setController(new AIAgentController(agent));
+        _agents.add(agent);
+
+        agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 60, 60);
+        agent.setController(new GamepadAgentController(agent));
+        _agents.add(agent);
 
         _map = new TiledMap();
         layers = _map.getLayers();
@@ -325,7 +327,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
         _renderer.render();
     }
 
-    public void updateAndRender(Matrix4 cameraMatrix)
+    public void updateAndRender(OrthographicCamera camera, Matrix4 cameraMatrix)
     {
         double newTime = TimeUtils.millis() / 1000.0;
         double frameTime = Math.min(newTime - currentTime, 0.25);
@@ -351,7 +353,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
             {
                 Body body = obj.body;
                 BoundingBox box = obj.boundingBox;
-                boolean inFrustum = _camera.frustum.boundsInFrustum(box);
+                boolean inFrustum = this._camera.frustum.boundsInFrustum(box);
                 if (inFrustum && !_activeCells.contains(obj))
                 {
                     body.setActive(true);
@@ -386,8 +388,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
         // Keep track of day and time
         processDayAndTime();
 
-        // TODO: Find alternative?
-        rayHandler.setCombinedMatrix(cameraMatrix);
+        rayHandler.setCombinedMatrix(camera);
         rayHandler.updateAndRender();
     }
 

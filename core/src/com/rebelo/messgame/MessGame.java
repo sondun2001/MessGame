@@ -3,15 +3,14 @@ package com.rebelo.messgame;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.rebelo.messgame.map.MessMap;
+import com.rebelo.messgame.services.NetworkManager;
 
 public class MessGame extends Game
 {
@@ -36,6 +35,7 @@ public class MessGame extends Game
     private BitmapFont _font;
     private SpriteBatch _batch;
     private OrthographicCamera _camera;
+    private NetworkManager _networkManager;
 
     private Box2DDebugRenderer _box2dRenderer;
 
@@ -73,6 +73,8 @@ public class MessGame extends Game
         //_box2dRenderer = new Box2DDebugRenderer();
 
         _font = new BitmapFont();
+
+        _networkManager = new NetworkManager();
 	}
 
 	@Override
@@ -96,7 +98,7 @@ public class MessGame extends Game
 
         // Update entities
         Matrix4 cameraMatrix = _camera.combined.scale(PIXELS_PER_METER, PIXELS_PER_METER, PIXELS_PER_METER);
-        _messMap.updateAndRender(cameraMatrix);
+        _messMap.updateAndRender(_camera, cameraMatrix);
 
         // TODO: Update particles
 
