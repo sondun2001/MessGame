@@ -1,10 +1,10 @@
 package com.rebelo.messgame.controllers;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.ControllerListener;
 import com.badlogic.gdx.controllers.PovDirection;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
@@ -16,6 +16,7 @@ import com.rebelo.messgame.utils.GamePadSteering;
  * Created by sondu on 7/17/2016.
  * TODO: Abstract out controls to support various gamepads
  * TODO: Support multiple agents and controllers
+ * TODO: Keybindings support
  */
 public class GamepadAgentController implements IAgentController, ControllerListener {
 
@@ -24,7 +25,8 @@ public class GamepadAgentController implements IAgentController, ControllerListe
         NONE,
         XBOX_ONE,
         XBOX_360,
-        SHIELD
+        SHIELD,
+        WIRELESS
     }
 
     @Override
@@ -84,8 +86,6 @@ public class GamepadAgentController implements IAgentController, ControllerListe
 
     GamePad _gamePad = GamePad.NONE;
 
-    float _firePercent;
-
     private static final float ROTATE_EPSILON = 0.1f;
     private static final float STEERING_EPSILON = 0.1f;
     private static final float STEERING_ROTATION_EPSILON = 0.3f;
@@ -105,10 +105,13 @@ public class GamepadAgentController implements IAgentController, ControllerListe
 
         _agentController = controller;
 
-        if (_agentController.getName().toLowerCase().contains("xbox") && _agentController.getName().contains("360")){
+        boolean isXbox = _agentController.getName().toLowerCase().contains("xbox");
+        if (isXbox && _agentController.getName().contains("360")){
             _gamePad = GamePad.XBOX_360;
-        } else if (_agentController.getName().toLowerCase().contains("xbox") && _agentController.getName().toLowerCase().contains("one")){
+        } else if (isXbox && _agentController.getName().toLowerCase().contains("one")){
             _gamePad = GamePad.XBOX_ONE;
+        } else if (_agentController.getName().toLowerCase().contains("wireless")) {
+            _gamePad = GamePad.WIRELESS;
         }
 
         controller.addListener(this);
@@ -134,20 +137,31 @@ public class GamepadAgentController implements IAgentController, ControllerListe
             float rotateXValue = 0f;
             float rotateYValue = 0f;
 
-            float turboButton = 0f;
+            boolean turboButton = false;
 
-            if (_gamePad == GamePad.XBOX_360 || _gamePad == GamePad.XBOX_ONE){
+            // todo: Let controller manager translate all the gamepad buttons to our game buttons.
+            // todo: Controllermanager should check for any changes applied in settings
+            // todo: We will check controller manager for buttons, not directly
+
+            if (_gamePad == GamePad.XBOX_360 || _gamePad == GamePad.XBOX_ONE ){
                 axisXValue = _agentController.getAxis(XBox360Pad.AXIS_LEFT_X);
                 axisYValue = _agentController.getAxis(XBox360Pad.AXIS_LEFT_Y);
                 rotateXValue = _agentController.getAxis(XBox360Pad.AXIS_RIGHT_X);
                 rotateYValue = _agentController.getAxis(XBox360Pad.AXIS_RIGHT_Y);
-                turboButton = _agentController.getAxis(XBox360Pad.AXIS_RIGHT_TRIGGER);
+                turboButton = _agentController.getButton(XBox360Pad.BUTTON_L3);
 
-                if (_agentController.getButton(XBox360Pad.BUTTON_RB)) {
-                    _firePercent += delta;
-                } else if (_firePercent > 0) {
-                    _humanAgent.use(HumanAgent.Hand.RIGHT, MathUtils.clamp(_firePercent, .2f, 1f));
-                    _firePercent = 0;
+                float rightTrigger = _agentController.getAxis(XBox360Pad.AXIS_RIGHT_TRIGGER);
+                if (rightTrigger >= 0.1f) {
+                    _humanAgent.useHand(HumanAgent.Hand.RIGHT, rightTrigger, delta);
+                } else {
+                    _humanAgent.stopUsingHand(HumanAgent.Hand.RIGHT);
+                }
+
+                float leftTrigger = _agentController.getAxis(XBox360Pad.AXIS_LEFT_TRIGGER);
+                if (leftTrigger >= 0.1f) {
+                    _humanAgent.useHand(HumanAgent.Hand.LEFT, leftTrigger, delta);
+                } else {
+                    _humanAgent.stopUsingHand(HumanAgent.Hand.LEFT);
                 }
             }
 
@@ -179,13 +193,13 @@ public class GamepadAgentController implements IAgentController, ControllerListe
         removeGamepad();
     }
 
-    float processAxis(float axisValue, float turboButton) {
+    float processAxis(float axisValue, boolean turboButton) {
         float velocity = 0f;
 
         if (Math.abs(axisValue) > 0.01) {
             velocity = (axisValue * INPUT_FORCE);
 
-            if (turboButton > 0.1f) {
+            if (turboButton) {
                 _humanAgent.turboEnabled(true);
             } else {
                 _humanAgent.turboEnabled(false);

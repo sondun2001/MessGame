@@ -9,6 +9,8 @@ import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.StreamUtils;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.entities.HumanAgent;
+import com.rebelo.messgame.services.EventBus;
+import com.squareup.otto.Subscribe;
 
 import java.io.Reader;
 
@@ -35,7 +37,6 @@ public class AIAgentController implements IAgentController, Pool.Poolable {
             reader = Gdx.files.internal("ai/human.tree").reader();
             BehaviorTreeParser<HumanAgent> parser = new BehaviorTreeParser<HumanAgent>(BehaviorTreeParser.DEBUG_HIGH);
             _humanBehaviourTree = parser.parse(reader, humanAgent);
-
         } finally {
             StreamUtils.closeQuietly(reader);
         }

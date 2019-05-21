@@ -26,14 +26,14 @@ import com.badlogic.gdx.utils.ObjectSet;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.rebelo.messgame.MessGame;
 import com.rebelo.messgame.controllers.AIAgentController;
+import com.rebelo.messgame.controllers.ButtonDownEvent;
 import com.rebelo.messgame.controllers.GamepadAgentController;
+import com.rebelo.messgame.controllers.IGamePadConsumer;
 import com.rebelo.messgame.entities.*;
 import com.rebelo.messgame.models.Agent;
-import com.rebelo.messgame.services.BuildingFactory;
-import com.rebelo.messgame.services.ControllerManager;
-import com.rebelo.messgame.services.HumanAgentFactory;
-import com.rebelo.messgame.services.ProjectileFactory;
+import com.rebelo.messgame.services.*;
 import com.rebelo.messgame.utils.OrthoCamController;
+import com.squareup.otto.Subscribe;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
@@ -44,7 +44,7 @@ import java.util.Iterator;
  * Created by sondun2001 on 12/15/13.
  */
 // TODO: Pass in data from the server to generate original map
-public class MessMap extends InputAdapter implements TileBasedMap
+public class MessMap extends InputAdapter implements TileBasedMap, IGamePadConsumer
 {
     // TODO: New Interface for handling game rules / mode, have it processed here
 
@@ -102,9 +102,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
     private ObjectMap<Cell, GameObject> _gameObjectByCell = new ObjectMap<TiledMapTileLayer.Cell, GameObject>();
     private ObjectSet<GameObject> _activeCells = new ObjectSet<GameObject>();
     private Array<GameObject> _gameObjects = new Array<GameObject>();
-
-    private ControllerManager _controllerManager;
-
     public Array<HumanAgent> getAgents() {
         return _agents;
     }
@@ -118,14 +115,16 @@ public class MessMap extends InputAdapter implements TileBasedMap
     public int tileWidth;
     public int tileHeight;
     public MapLayers layers;
-    public RayHandler rayHandler;
 
+    public static RayHandler rayHandler;
     public static World world;
 
     public MessMap(OrthographicCamera camera, World world)
     {
 
         this.world = world;
+
+        // todo: What should process contacts? Game mode right?
         world.setContactListener(new ContactListener() {
 
             @Override
@@ -156,7 +155,7 @@ public class MessMap extends InputAdapter implements TileBasedMap
             }
         });
 
-        _controllerManager = new ControllerManager(this);
+        ControllerManager.getInstance().registerSubscriber(this);
 
         // TODO: Download updated sprite sheet from server
         _atlas = new TextureAtlas("data/MessAssets.pack");
@@ -183,14 +182,6 @@ public class MessMap extends InputAdapter implements TileBasedMap
         }
         */
 
-        HumanAgent agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 30, 30);
-        agent.setController(new AIAgentController(agent));
-        _agents.add(agent);
-
-        agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 60, 60);
-        agent.setController(new GamepadAgentController(agent));
-        _agents.add(agent);
-
         _map = new TiledMap();
         layers = _map.getLayers();
 
@@ -206,11 +197,29 @@ public class MessMap extends InputAdapter implements TileBasedMap
         _camera = camera;
         _cameraController = new OrthoCamController(this, camera);
 
+        // For input
+        _worldCoordinates = new Vector3();
+
+        // Our pathfinder!
+        _aStarPathFinder = new AStarPathFinder(this, 32, false);
+
+        _renderer = new OrthogonalTiledMapRenderer(_map);
+        _tileMapSpriteBatch = _renderer.getBatch();
+
         // Input processing
         _multiplexer = new InputMultiplexer();
         _multiplexer.addProcessor(this);
         _multiplexer.addProcessor(_cameraController);
         Gdx.input.setInputProcessor(_multiplexer);
+
+
+        // PC Settings
+        RayHandler.useDiffuseLight(true);
+        rayHandler = new RayHandler(this.world);
+        rayHandler.setCombinedMatrix(_camera);
+        rayHandler.setShadows(true);
+        rayHandler.setBlur(true);
+        rayHandler.setCulling(true);
 
         // Ground
         _groundLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight);
@@ -236,22 +245,37 @@ public class MessMap extends InputAdapter implements TileBasedMap
         _objectLayer = new TiledMapTileLayer(width, height, tileWidth, tileHeight);
         layers.add(_objectLayer);
 
-        // For input
-        _worldCoordinates = new Vector3();
+        HumanAgent agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 30, 30);
+        agent.setController(new AIAgentController(agent));
+        _agents.add(agent);
 
-        // PC Settings
-        RayHandler.useDiffuseLight(true);
-        rayHandler = new RayHandler(this.world);
-        rayHandler.setCombinedMatrix(_camera);
-        rayHandler.setShadows(true);
-        rayHandler.setBlur(true);
-        rayHandler.setCulling(true);
+        agent = HumanAgentFactory.getInstance().createAgent(_buildingSprites.get(1), new Agent(), this, 60, 60);
+        agent.setController(new GamepadAgentController(agent));
+        _agents.add(agent);
 
-        // Our pathfinder!
-        _aStarPathFinder = new AStarPathFinder(this, 32, false);
+        EventBus.getInstance().register(this);
+    }
 
-        _renderer = new OrthogonalTiledMapRenderer(_map);
-        _tileMapSpriteBatch = _renderer.getBatch();
+    @Subscribe
+    public void buttonDown(ButtonDownEvent event) {
+
+        HumanAgent[] agents = getAgents().items;
+
+        // Find an agent that isn't being controlled
+        // todo: Is there a system.linq equivellent?
+        for (int i = 0; i < agents.length; i++) {
+            HumanAgent agent = agents[i];
+
+            if (agent.getController() instanceof AIAgentController) {
+                GamepadAgentController gamepadAgentController = new GamepadAgentController(agent);
+                gamepadAgentController.setGamepad(event.controller);
+                agent.setController(gamepadAgentController);
+                //_agentByController.put(controller, agent);
+
+                Gdx.app.log("GamepadAgentController", "Assigning controller to agent: " + event.controller.getName());
+                break;
+            }
+        }
     }
 
     public void dispose()

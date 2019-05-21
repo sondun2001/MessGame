@@ -25,6 +25,7 @@ public class NetworkManager {
         client.start();
 
         InetAddress address = client.discoverHost(54777, 5000);
+
         if (address == null) {
             Gdx.app.log("Network", "Could not find server, starting server.");
 
@@ -41,9 +42,7 @@ public class NetworkManager {
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }
-        }
-
-        if (address != null) {
+        } else {
             try {
                 client.connect(5000, address, 54555, 54777);
             } catch (IOException clientException) {
@@ -52,7 +51,7 @@ public class NetworkManager {
 
             client.addListener(new Listener() {
                 public void received(Connection connection, Object object) {
-                    Gdx.app.log("Client", "Received");
+                Gdx.app.log("Client", "Received");
                 /*
                 if (object instanceof SomeResponse) {
                     SomeResponse response = (SomeResponse)object;

@@ -18,6 +18,7 @@ import com.rebelo.messgame.controllers.IAgentController;
 import com.rebelo.messgame.entities.states.HumanState;
 import com.rebelo.messgame.map.MessMap;
 import com.rebelo.messgame.models.Agent;
+import com.rebelo.messgame.objects.projectiles.equippables.Flashlight;
 import com.rebelo.messgame.objects.projectiles.equippables.IEquippable;
 import com.rebelo.messgame.objects.projectiles.equippables.Snowballs;
 import eos.good.Good;
@@ -32,7 +33,8 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     // TODO: Social Graph (Connections and strength in relationships)
     // TODO: Disable steering behaviour while in vehicle
     // TODO: Hide agent while in vehicle
-    // !TODO: Change concept of controller, and use existing steering behavior system, that way we can stack behaviours :)
+    // !TODO: Change concept of controller, and useHand existing steering behavior system, that way we can stack behaviours :)
+    // TODO: We need a generic component system that affects behaviour, and item / inventory system
 
     public enum Hand {
         LEFT,
@@ -57,7 +59,6 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
     private Agent _agent;
     private MessMap _map;
     private Array<IEquippable> _carriables = new Array<IEquippable>();
-    private int _currentWeapon = 0;
 
     private Wander<Vector2> _wander;
     private boolean _isTurboEnabled;
@@ -71,13 +72,17 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         _carriables.add(defaultCarriable);
         _itemByHand.put(Hand.RIGHT, defaultCarriable);
 
+        IEquippable flashLight = new Flashlight(body, map);
+        _carriables.add(flashLight);
+        _itemByHand.put(Hand.LEFT, flashLight);
+
         this.setMaxLinearAcceleration(MAX_ACCELERATION);
         this.setMaxLinearSpeed(MAX_SPEED);
         this.setMaxAngularAcceleration(5f); // greater than 0 because independent facing is enabled
         this.setMaxAngularSpeed(8f);
 
         _wander = new Wander<Vector2>(this) //
-        .setFaceEnabled(true) // We want to use Face internally (independent facing is on)
+        .setFaceEnabled(true) // We want to useHand Face internally (independent facing is on)
         .setAlignTolerance(0.001f) // Used by Face
         .setDecelerationRadius(1) // Used by Face
         .setTimeToTarget(0.1f) // Used by Face
@@ -119,8 +124,12 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
             float h = sprite.getRegionHeight();
             float ox = w / 2f;
             float oy = h / 2f;
-            sprite.setPosition(_targetLocation.x * MessGame.PIXELS_PER_METER - ox, _targetLocation.y * MessGame.PIXELS_PER_METER - oy);
-            sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+
+            Vector2 mapPos = new Vector2(_targetLocation.x * MessGame.PIXELS_PER_METER - ox, _targetLocation.y * MessGame.PIXELS_PER_METER - oy);
+            float rotation = body.getAngle() * MathUtils.radiansToDegrees;
+
+            sprite.setPosition(mapPos.x, mapPos.y);
+            sprite.setRotation(rotation);
             sprite.draw(batch);
         }
     }
@@ -153,12 +162,9 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
         if (_controller != null) {
             _controller.update(deltaTime);
         }
-
         // TODO: Check closest resource (within focus / reach)
 
         super.update(deltaTime);
-
-
     }
 
     public void turboEnabled(boolean isTurbo) {
@@ -183,6 +189,7 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
 
     }
 
+    // Pick up what?
     public void pickUp () {
         // If 2 items equipped, or 1 item that requires 2 hands, put items away
         IEquippable leftHandItem = _itemByHand.get(Hand.LEFT);
@@ -202,11 +209,11 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
 
     public void build () {
         // TODO: Do we have an item equipped that helps us build?
-        // If we do, let's use the item
-        // If not, put them away and use our hands!
+        // If we do, let's useHand the item
+        // If not, put them away and useHand our hands!
     }
 
-    public void use (Hand hand,  float forcePercent) {
+    public void useHand(Hand hand, float force, float delta) {
         //while ( totalRotation < -180 * MathUtils.degreesToRadians ) totalRotation += 360 * MathUtils.degreesToRadians;
         //while ( totalRotation >  180 * MathUtils.degreesToRadians ) totalRotation -= 360 * MathUtils.degreesToRadians;
 
@@ -224,7 +231,18 @@ public class HumanAgent extends Box2dSteeringEntity implements IAgent{
             float xPos = pos.x + (direction.x * offset / MessGame.PIXELS_PER_METER);
             float yPos = pos.y + (direction.y * offset / MessGame.PIXELS_PER_METER);
 
-            item.use(xPos, yPos, direction, forcePercent);
+            item.activate(xPos, yPos, direction, force, delta);
+        }
+    }
+
+    public IEquippable getEquippedItemForHand(Hand hand) {
+        return _itemByHand.get(hand);
+    }
+
+    public void stopUsingHand(Hand hand) {
+        IEquippable item = _itemByHand.get(hand);
+        if (item != null) {
+            item.deactivate();
         }
     }
 

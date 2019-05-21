@@ -3,12 +3,10 @@ package com.rebelo.messgame.services;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.controllers.*;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.IntMap;
 import com.badlogic.gdx.utils.ObjectMap;
-import com.rebelo.messgame.controllers.AIAgentController;
-import com.rebelo.messgame.controllers.GamepadAgentController;
-import com.rebelo.messgame.controllers.IAgentController;
-import com.rebelo.messgame.controllers.XBox360Pad;
+import com.rebelo.messgame.controllers.*;
 import com.rebelo.messgame.entities.HumanAgent;
 import com.rebelo.messgame.map.MessMap;
 
@@ -19,25 +17,35 @@ import com.rebelo.messgame.map.MessMap;
 // TODO: Listen for button press on controllers to determine if a slot is available
 // TODO: Assign controller on button press to open slot.
 // TODO: Pool AIAgentController and GamepadAgentController
+// TODO: Need dependency system, this would depend on settings.
 public class ControllerManager implements ControllerListener {
+
+    private static ControllerManager _instance;
 
     private static final int MAX_LOCAL_SLOTS = 4;
 
-    MessMap _map;
-
     IntMap<IAgentController> _controllerBySlot = new IntMap<IAgentController>();
     ObjectMap<Controller, HumanAgent> _agentByController = new ObjectMap<Controller, HumanAgent>();
+    Array<IGamePadConsumer> subscribers = new Array<IGamePadConsumer>();
+
     int _numControllers = 0;
 
-    public ControllerManager(MessMap map) {
-        _map = map;
-
+    public ControllerManager() {
         Controllers.addListener(this);
 
         for (Controller controller : Controllers.getControllers()) {
             Gdx.app.log("GamepadAgentController", controller.getName());
             // TODO: Find available controllers
         }
+    }
+
+    // static method to create instance of Singleton class
+    public static ControllerManager getInstance()
+    {
+        if (_instance == null)
+            _instance = new ControllerManager();
+
+        return _instance;
     }
 
     @Override
@@ -54,25 +62,16 @@ public class ControllerManager implements ControllerListener {
         }
     }
 
+    public void registerSubscriber(IGamePadConsumer gamePadConsumer) {
+        subscribers.add(gamePadConsumer);
+    }
+
     @Override
     public boolean buttonDown(Controller controller, int buttonCode) {
-        if (buttonCode == XBox360Pad.BUTTON_A && _agentByController.get(controller) == null) {
-            HumanAgent[] agents = _map.getAgents().items;
+        // todo: Check settings for override. Fire off button event.
 
-            // Find an agent that isn't being controlled
-            for (int i = 0; i < agents.length; i++) {
-                HumanAgent agent = agents[i];
-
-                if (agent.getController() instanceof AIAgentController) {
-                    GamepadAgentController gamepadAgentController = new GamepadAgentController(agent);
-                    gamepadAgentController.setGamepad(controller);
-                    agent.setController(gamepadAgentController);
-                    _agentByController.put(controller, agent);
-
-                    Gdx.app.log("GamepadAgentController", "Assigning controller to agent!");
-                    break;
-                }
-            }
+        if (buttonCode == XBox360Pad.BUTTON_A) {
+            EventBus.getInstance().post(new ButtonDownEvent(ButtonDownEvent.GameButton.JOIN, controller));
         }
 
         return false;

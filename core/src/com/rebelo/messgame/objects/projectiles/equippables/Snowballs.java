@@ -15,6 +15,11 @@ public class Snowballs implements IEquippable {
 
     Sprite _projectileSprite;
     MessMap _map;
+    float _firePercent;
+    float _xPos;
+    float _yPos;
+    Vector2 _direction;
+    boolean _isActive;
 
     public Snowballs(Sprite projectileSprite, MessMap map) {
         _projectileSprite = projectileSprite;
@@ -32,28 +37,43 @@ public class Snowballs implements IEquippable {
     }
 
     @Override
-    public void use(float xPos, float yPos, Vector2 direction, float forcePercent) {
-        // Throw Snowballs!
-        try {
-            ProjectileFactory.getInstance().createProjectile(SnowBall.class, _projectileSprite, _map, xPos, yPos, direction.x, direction.y, forcePercent);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void activate() {
-
+    public void activate(float xPos, float yPos, Vector2 direction, float force, float delta)
+    {
+       _xPos = xPos;
+       _yPos = yPos;
+       _direction = direction;
+       _firePercent += delta;
+       _isActive = true;
     }
 
     @Override
     public void deactivate() {
+        if (_isActive) {
+            // Throw Snowballs!
+            try {
+                ProjectileFactory.getInstance().createProjectile(SnowBall.class, _projectileSprite, _map, _xPos, _yPos, _direction.x, _direction.y, _firePercent);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+
+            _firePercent = 0.0f;
+            _isActive = false;
+        }
+    }
+
+    @Override
+    public void equip() {
+        _firePercent = 0.0f;
+    }
+
+    @Override
+    public void unequip() {
 
     }
 
