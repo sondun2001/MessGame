@@ -33,7 +33,6 @@ import com.rebelo.messgame.entities.*;
 import com.rebelo.messgame.models.Agent;
 import com.rebelo.messgame.services.*;
 import com.rebelo.messgame.utils.OrthoCamController;
-import com.squareup.otto.Subscribe;
 import org.newdawn.slick.util.pathfinding.AStarPathFinder;
 import org.newdawn.slick.util.pathfinding.PathFindingContext;
 import org.newdawn.slick.util.pathfinding.TileBasedMap;
@@ -256,7 +255,7 @@ public class MessMap extends InputAdapter implements TileBasedMap, IGamePadConsu
         EventBus.getInstance().register(this);
     }
 
-    @Subscribe
+    // todo: Subscribe to button down
     public void buttonDown(ButtonDownEvent event) {
 
         HumanAgent[] agents = getAgents().items;

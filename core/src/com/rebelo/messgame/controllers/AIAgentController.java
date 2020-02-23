@@ -10,7 +10,6 @@ import com.badlogic.gdx.utils.StreamUtils;
 import com.rebelo.messgame.ai.steering.Box2dSteeringEntity;
 import com.rebelo.messgame.entities.HumanAgent;
 import com.rebelo.messgame.services.EventBus;
-import com.squareup.otto.Subscribe;
 
 import java.io.Reader;
 
