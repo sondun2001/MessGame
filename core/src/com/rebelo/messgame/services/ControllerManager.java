@@ -9,6 +9,8 @@ import com.badlogic.gdx.utils.ObjectMap;
 import com.rebelo.messgame.controllers.*;
 import com.rebelo.messgame.entities.HumanAgent;
 import com.rebelo.messgame.map.MessMap;
+import de.golfgl.gdx.controllers.mapping.ControllerMappings;
+import de.golfgl.gdx.controllers.mapping.MappedControllerAdapter;
 
 /**
  * Created by sondu on 8/14/2016.
@@ -18,7 +20,7 @@ import com.rebelo.messgame.map.MessMap;
 // TODO: Assign controller on button press to open slot.
 // TODO: Pool AIAgentController and GamepadAgentController
 // TODO: Need dependency system, this would depend on settings.
-public class ControllerManager implements ControllerListener {
+public class ControllerManager extends MappedControllerAdapter implements ControllerListener {
 
     private static ControllerManager _instance;
 
@@ -30,7 +32,9 @@ public class ControllerManager implements ControllerListener {
 
     int _numControllers = 0;
 
-    public ControllerManager() {
+    public ControllerManager(ControllerMappings controllerMappings) {
+        super(controllerMappings);
+
         Controllers.addListener(this);
 
         for (Controller controller : Controllers.getControllers()) {
@@ -42,8 +46,10 @@ public class ControllerManager implements ControllerListener {
     // static method to create instance of Singleton class
     public static ControllerManager getInstance()
     {
-        if (_instance == null)
-            _instance = new ControllerManager();
+        if (_instance == null) {
+            ControllerMappings controllerMappings = new ControllerMappings();
+            _instance = new ControllerManager(controllerMappings);
+        }
 
         return _instance;
     }

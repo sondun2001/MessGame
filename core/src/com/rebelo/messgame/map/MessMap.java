@@ -367,6 +367,9 @@ public class MessMap extends InputAdapter implements TileBasedMap, IGamePadConsu
         }
 
         // Check which objects are in frustrum
+        // todo: When moving to ASHELEY, we can pool the physics body by making
+        // them a specific component, that way they can be spawned from pool
+        // when entering frustum
         Iterator itr = _gameObjects.iterator();
         while(itr.hasNext())
         {

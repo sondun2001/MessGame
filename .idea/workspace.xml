@@ -8,36 +8,13 @@
   <component name="ChangeListManager">
     <list default="true" id="30d53e98-86e1-4eb1-9378-7d51c41144d9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/AIAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/AIAgentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/GamepadAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/GamepadAgentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/map/MessMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/map/MessMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/ControllerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/ControllerManager.java" afterDir="false" />
     </list>
-    <ignored path="$PARENT-1-PROJECT_LOC$/.gradle/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/core/.gradle/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/core/build/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/desktop/.gradle/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/desktop/build/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/html/.gradle/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/html/build/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/assets/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/blame/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/bundles/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/classes/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/dependency-cache/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/incremental/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/instant-run-support/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/jniLibs/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/lint/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/manifests/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/pre-dexed/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/res/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/rs/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/symbols/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/intermediates/transforms/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/outputs/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/reports/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/test-results/" />
-    <ignored path="$PARENT-1-PROJECT_LOC$/android/build/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,9 +22,6 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="Emulator-Api28-Default" />
   <component name="ExternalProjectsData">
@@ -75,9 +49,6 @@
   <component name="FavoritesManager">
     <favorites_list name="MessGame" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -87,67 +58,12 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>otto</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/desktop/build.gradle" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="230" />
-    <option name="y" value="26" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
   </component>
   <component name="ProjectId" id="1YBemfYPveWGpdh0wXG7ij6mPwU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="MessGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MessGame" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="MessGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MessGame" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="MessGame" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\sondu\Documents\MessGame" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -158,11 +74,13 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
     <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="ics" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -178,18 +96,6 @@
       <recent name="C:\Users\sondu\Documents\project\MessGame\android\assets\ui" />
       <recent name="C:\Users\sondu\Documents\project\MessGame\core\src\com\rebelo\messgame\ai" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.DesktopLauncher">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -245,6 +151,12 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -265,13 +177,6 @@
       <envs />
       <patterns />
       <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -301,15 +206,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -334,31 +230,8 @@
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
+      <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
@@ -397,12 +270,6 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DesktopLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rebelo.messgame.desktop.DesktopLauncher" />
       <module name="desktop" />
@@ -419,6 +286,13 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -466,9 +340,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.DesktopLauncher" />
       <item itemvalue="Android App.android" />
+      <item itemvalue="Application.DesktopLauncher" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -484,59 +367,6 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <layout>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23560767" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="5" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49946696" weight="0.30985916" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" visible="true" weight="0.32995737" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23560767" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Debug" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Logcat" order="3" />
-      <window_info anchor="bottom" id="TODO" order="4" />
-      <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="8" visible="true" weight="0.30985916" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" weight="0.32995737" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-    </layout-to-restore>
-  </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.tree" />
   </component>
@@ -549,51 +379,70 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Configure_Path_Variables" timestamp="1582421431951">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser" timestamp="1607384084205">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="552" y="178" key="#Configure_Path_Variables/0.0.1920.1040@0.0.1920.1040" timestamp="1582421431951" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1582422996264">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1607384084205" />
+    <state width="491" height="466" key="DebuggerActiveHint" timestamp="1607385623086">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582422996264" />
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1582421754584">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="491" height="466" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1607385623086" />
+    <state width="2517" height="491" key="GridCell.Tab.0.bottom" timestamp="1607442553846">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582421754584" />
+    <state width="2517" height="491" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
+    <state width="2517" height="491" key="GridCell.Tab.0.center" timestamp="1607442553846">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="491" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
+    <state width="2517" height="491" key="GridCell.Tab.0.left" timestamp="1607442553846">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="491" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
+    <state width="2517" height="491" key="GridCell.Tab.0.right" timestamp="1607442553846">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="491" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
+    <state width="2517" height="491" key="GridCell.Tab.1.bottom" timestamp="1607442553661">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="491" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
+    <state width="2517" height="491" key="GridCell.Tab.1.center" timestamp="1607442553661">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="491" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
+    <state width="2517" height="491" key="GridCell.Tab.1.left" timestamp="1607442553661">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="491" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
+    <state width="2517" height="491" key="GridCell.Tab.1.right" timestamp="1607442553661">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="491" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
+    <state x="781" y="342" key="SettingsEditor" timestamp="1607389308016">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1607389308016" />
+    <state x="768" y="789" key="com.intellij.ide.util.TipDialog" timestamp="1607440806213">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="768" y="789" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1607440806213" />
+    <state x="1089" y="616" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607384065492">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1089" y="616" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1607384065492" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1607384688423">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1607384688423" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1607384620939">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1607384620939" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/desktop/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="75" selection-start-line="7" selection-start-column="75" selection-end-line="7" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/proguard-project.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
