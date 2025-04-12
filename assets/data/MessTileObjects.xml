@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<catalog>
+    <category id="0" name="walls">
+        <!-- TODO: Define states -->
+        <tile id="0">
+            <!-- Object Properties? -->
+            <!-- Config per state? -->
+            <!-- Asset -->
+            <!-- Efficiency -->
+            <!-- Production -->
+        </tile>
+    </category>
+    <category id="1" name="lights">
+        <tile id="1">
+
+        </tile>
+    </category>
+    <category id="2" name="storage">
+        <tile id="2">
+
+        </tile>
+    </category>
+</catalog>

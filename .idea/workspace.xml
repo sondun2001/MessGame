@@ -1,282 +1,340 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLayouts">
-    <shared>
-      <config />
-    </shared>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30d53e98-86e1-4eb1-9378-7d51c41144d9" name="Default" comment="">
+    <list default="true" id="9667ecd1-93f1-4fa8-8d73-8d66d974030e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/ai/dog.tree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/ai/dynamicGuardSelectorExample.tree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/ai/human.tree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/ai/human_alpha.tree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/data/MessAssets.pack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/data/MessAssets.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/data/libgdx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/ui/uiskin.atlas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/ui/uiskin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/assets/ui/uiskin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/ic_launcher-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/ic_launcher-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/android/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/drawable-anydpi-v26/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/drawable-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/drawable-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/drawable-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/drawable-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/drawable-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/drawable-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/values/color.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/values/color.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/com/rebelo/messgame/AndroidLauncher.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/AIAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/AIAgentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/GamepadAgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/GamepadAgentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/map/MessMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/map/MessMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/ControllerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/ControllerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/MessGame.gwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/economy/goods/Good.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/MessGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/dog/BarkTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/dog/CareTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/dog/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/dog/MarkTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/dog/PlayTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/dog/RestTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/dog/WalkTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/BiologicalGuard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/DefendSelfTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/HasNoAccessToFoodCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/HasNoAccessToWaterCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/HaveFunTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/IsHomelessCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/IsHungryCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/IsThirstyCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/LookForFoodTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/ObserveTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/RestTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/RobTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/SeekSafetyTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/SeekShelterTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/SeekVehicleTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/SleepTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/StealTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/UseFoodTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/UseWaterTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/human/WanderTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dFieldOfViewProximity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dRadiusProximity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dRaycastCollisionDetector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dSquareAABBProximity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dSteeringEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dSteeringUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/ai/steering/Box2dTargetInputProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/AIAgentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/ButtonDownEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/GamepadAgentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/IAgentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/IGamePadConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/KeyboardAgentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/NetworkedAgentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/PS4Pad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/controllers/XBox360Pad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/AISprite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/AnimalAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/BuildingComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/GameLight.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/GameObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/HumanAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/IAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/MovingAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/VehicleAgent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/states/AnimalState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/entities/states/HumanState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/map/INetworkedMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/map/MessMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/models/Agent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/models/AgentRelationship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/models/Map.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/models/PlayerSlot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/models/RotationLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/models/Zone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/objects/projectiles/Projectile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/objects/projectiles/SnowBall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/objects/projectiles/equippables/Flashlight.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/objects/projectiles/equippables/IEquippable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/objects/projectiles/equippables/Snowballs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/BuildingFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/ControllerManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/EventBus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/GameManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/HumanAgentFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/NetworkManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/services/ProjectileFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/utils/FacePoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/utils/GamePadSteering.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/rebelo/messgame/utils/OrthoCamController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/agent/Agent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/agent/firm/CFirm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/agent/firm/ConsumerGoodFirm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/agent/firm/EFirm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/agent/firm/Firm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/agent/firm/NFirm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/agent/laborer/Laborer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/bank/Bank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/economy/Economy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/good/Capital.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/good/Enjoyment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/good/Good.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/good/Labor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/good/Necessity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/io/printer/BankPrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/io/printer/CSVPrintWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/io/printer/ConsumerMktPricePrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/io/printer/ConsumerMktVolPrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/io/printer/FirmsPrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/io/printer/LaborersPrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/io/printer/Printer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/market/CapitalMarket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/market/ConsumerGoodMarket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/market/Demand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/market/LaborMarket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/market/Market.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/simulation/Simulation1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/simulation/Simulation2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/util/Averager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/util/In.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/util/Out.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/eos/util/StdRandom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/kirchner/jumper/LineSegment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/SlickException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/ClasspathLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/DefaultLogSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/FileSystemLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/Log.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/LogSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/ResourceLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/ResourceLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/AStarHeuristic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/AStarPathFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/Mover.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/Path.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/PathFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/PathFindingContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/TileBasedMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/heuristics/ClosestHeuristic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/heuristics/ClosestSquaredHeuristic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/heuristics/ManhattanHeuristic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/navmesh/Link.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/navmesh/NavMesh.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/navmesh/NavMeshBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/navmesh/NavPath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/pathfinding/navmesh/Space.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/xml/ObjectTreeParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/xml/SlickXMLException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/xml/XMLElement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/xml/XMLElementList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/newdawn/slick/util/xml/XMLParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/com/rebelo/messgame/desktop/DesktopLauncher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/html/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/src/com/rebelo/messgame/GdxDefinition.gwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/src/com/rebelo/messgame/GdxDefinitionSuperdev.gwt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/src/com/rebelo/messgame/client/HtmlLauncher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/html/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/webapp/refresh.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/webapp/refresh.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/webapp/soundmanager2-jsmin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/webapp/soundmanager2-setup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/webapp/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/html/webapp/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Info.plist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Info.plist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ios/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default-1024w-1366h@2x~ipad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default-375w-667h@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default-414w-736h@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default-568h@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default@2x~ipad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Default~ipad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/app-store-icon-1024@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/app-store-icon-1024@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-app-icon-76@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-app-icon-76@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-app-icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-app-icon-76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-notifications-icon-20@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-notifications-icon-20@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-notifications-icon-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-notifications-icon-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-pro-app-icon-83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-pro-app-icon-83.5@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-settings-icon-29@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-settings-icon-29@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-settings-icon-29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-settings-icon-29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-spotlight-icon-40@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-spotlight-icon-40@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-spotlight-icon-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-spotlight-icon-40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-app-icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-app-icon-60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-app-icon-60@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-app-icon-60@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-notification-icon-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-notification-icon-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-notification-icon-20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-notification-icon-20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-icon-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-icon-40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-icon-40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-icon-40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-settings-icon-29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-settings-icon-29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-settings-icon-29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-settings-icon-29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/data/Media.xcassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/robovm.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ios/robovm.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/robovm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ios/robovm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/src/com/rebelo/messgame/IOSLauncher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Emulator-Api28-Default" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="MessGame" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="MessGame" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Singleton" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1YBemfYPveWGpdh0wXG7ij6mPwU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2vbnFlePbBergGpxxrSNxj60Mj7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
-    <property name="project.structure.last.edited" value="Build Variants" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="ics" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Lwjgl3Launcher.executor": "Run",
+    "Gradle.Build MessGame.executor": "Run",
+    "Gradle.Build MessGameUpdated.executor": "Run",
+    "Gradle.MessGameUpdated.executor": "Run",
+    "Gradle.MessGameUpdated:lwjgl3 [:lwjgl3:io.github.some_example_name.lwjgl3.Lwjgl3Launcher.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "external.system.has.shared.sources": "true",
+    "git-widget-placeholder": "integration",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Development/projects/MessGame",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sondu\Documents\project\MessGame\core\src\com\rebelo\messgame\ai" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.rebelo.messgame.models" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sondu\Documents\project\MessGame\android\assets\ai" />
-      <recent name="C:\Users\sondu\Documents\project\MessGame\core\src\com\rebelo\messgame\ai\dog" />
-      <recent name="C:\Users\sondu\Documents\project\MessGame\core\src\com\rebelo\messgame\ai\human" />
-      <recent name="C:\Users\sondu\Documents\project\MessGame\android\assets\ui" />
-      <recent name="C:\Users\sondu\Documents\project\MessGame\core\src\com\rebelo\messgame\ai" />
+      <recent name="E:\Development\projects\MessGameUpdated\core\src\main\java" />
+      <recent name="E:\Development\projects\MessGameUpdated\assets" />
+      <recent name="E:\Development\projects\MessGameUpdated\core\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Development\projects\MessGameUpdated\core\src\main\java" />
+      <recent name="E:\Development\projects\MessGameUpdated\core\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DesktopLauncher">
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Lwjgl3Launcher">
     <configuration name="android" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="android" />
+      <module name="MessGame.android" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
-      <Java />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="false" name="android" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="android" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DesktopLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rebelo.messgame.desktop.DesktopLauncher" />
-      <module name="desktop" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/android/assets" />
+    <configuration name="Lwjgl3Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="io.github.some_example_name.lwjgl3.Lwjgl3Launcher" />
+      <module name="MessGame.lwjgl3.main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/assets" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rebelo.messgame.desktop.*" />
+          <option name="PATTERN" value="io.github.some_example_name.lwjgl3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -284,239 +342,56 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration name="MessGame" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <module name="" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Android App.android" />
-      <item itemvalue="Application.DesktopLauncher" />
+      <item itemvalue="Application.Lwjgl3Launcher" />
+      <item itemvalue="Gradle.MessGame" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Lwjgl3Launcher" />
+        <item itemvalue="Gradle.MessGame" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="30d53e98-86e1-4eb1-9378-7d51c41144d9" name="Default" comment="" />
-      <created>1465523646184</created>
+      <changelist id="9667ecd1-93f1-4fa8-8d73-8d66d974030e" name="Changes" comment="" />
+      <created>1744422539803</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1465523646184</updated>
+      <updated>1744422539803</updated>
     </task>
     <servers />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.tree" />
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser" timestamp="1607384084205">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1607384084205" />
-    <state width="491" height="466" key="DebuggerActiveHint" timestamp="1607385623086">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="491" height="466" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1607385623086" />
-    <state width="2517" height="491" key="GridCell.Tab.0.bottom" timestamp="1607442553846">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
-    <state width="2517" height="491" key="GridCell.Tab.0.center" timestamp="1607442553846">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
-    <state width="2517" height="491" key="GridCell.Tab.0.left" timestamp="1607442553846">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
-    <state width="2517" height="491" key="GridCell.Tab.0.right" timestamp="1607442553846">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553846" />
-    <state width="2517" height="491" key="GridCell.Tab.1.bottom" timestamp="1607442553661">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
-    <state width="2517" height="491" key="GridCell.Tab.1.center" timestamp="1607442553661">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
-    <state width="2517" height="491" key="GridCell.Tab.1.left" timestamp="1607442553661">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
-    <state width="2517" height="491" key="GridCell.Tab.1.right" timestamp="1607442553661">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="2517" height="491" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607442553661" />
-    <state x="781" y="342" key="SettingsEditor" timestamp="1607389308016">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1607389308016" />
-    <state x="768" y="789" key="com.intellij.ide.util.TipDialog" timestamp="1607440806213">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="768" y="789" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1607440806213" />
-    <state x="1089" y="616" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607384065492">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1089" y="616" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1607384065492" />
-    <state x="936" y="330" key="run.anything.popup" timestamp="1607384688423">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1607384688423" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1607384620939">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1607384620939" />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Android</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>Android API 23, N preview Platform</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>android</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
